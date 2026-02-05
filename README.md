@@ -1,2 +1,0 @@
-# Projexa-AI
-VocaCare

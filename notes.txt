@@ -1,0 +1,2 @@
+1st commit:-
+On using whisper small model it directly transcripted the whole audio and didnt catch any stuttering though it caught some repetations but neither stuttering nor prolongations were caught due to models incapability 
