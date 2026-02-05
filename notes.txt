@@ -1,2 +1,4 @@
 1st commit:-
 On using whisper small model it directly transcripted the whole audio and didnt catch any stuttering though it caught some repetations but neither stuttering nor prolongations were caught due to models incapability 
+The approach we tried on 5th feb 2026:-
+We attempted to use the Whisper model to segment audio at the word level and train a classifier to detect stuttering based on word duration and waveform features (e.g., prolonged fillers like “uh” or “the”), but this rule-based duration logic resulted in poor model performance.
