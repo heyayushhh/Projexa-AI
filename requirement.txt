@@ -1,0 +1,27 @@
+# Core
+python>=3.9
+
+# Data handling
+pandas>=1.5
+numpy>=1.23
+
+# Audio processing
+scipy>=1.10
+librosa>=0.10.0
+soundfile>=0.12.1
+audioread>=3.0.0
+
+# Downloading
+requests>=2.28
+
+# Progress bars
+tqdm>=4.65
+
+# Visualization & notebooks
+matplotlib>=3.7
+ipython>=8.0
+jupyter>=1.0
+ipywidgets>=8.0
+
+
+## pip install -r requirements.txt
