@@ -1,70 +1,64 @@
 import pandas as pd
+import librosa
 from pathlib import Path
+from tqdm import tqdm
 
 # -------------------- CONFIG --------------------
-LABELS_CSV = "SEP-28k_labels.csv"
-STUTTER_DIR = Path("stutter_audio")
-CLEAN_DIR = Path("clean_audio")
+TRIMMED_ROOT = Path("normalized_audio")
 OUTPUT_CSV = "train_dataset.csv"
 
-# -------------------- LOAD LABELS --------------------
-df = pd.read_csv(LABELS_CSV)
-
-# Normalize numeric columns
-df["EpId"] = df["EpId"].astype(int)
-df["ClipId"] = df["ClipId"].astype(int)
-
-# Index labels by (Show, EpId, ClipId)
-label_index = {
-    (row.Show.strip(), row.EpId, row.ClipId): (row.Start, row.Stop)
-    for _, row in df.iterrows()
+LABEL_MAP = {
+    "clean_audio": 0,
+    "stutter_audio": 1
 }
+
+SAMPLE_RATE = 16000
 
 rows = []
 
-# -------------------- HELPER --------------------
-def process_root(root_dir: Path, stutter_label: int):
-    fold1 = root_dir.name  # stutter_audio / clean_audio
+# -------------------- SCAN DATASET --------------------
+for label_folder, label_value in LABEL_MAP.items():
+    base_dir = TRIMMED_ROOT / label_folder
 
-    for show_dir in root_dir.iterdir():
+    if not base_dir.exists():
+        print(f"⚠️ Skipping missing folder: {base_dir}")
+        continue
+
+    print(f"🔹 Processing {label_folder}")
+
+    for show_dir in base_dir.iterdir():
         if not show_dir.is_dir():
             continue
-
-        fold2 = show_dir.name  # HeStutters
 
         for ep_dir in show_dir.iterdir():
             if not ep_dir.is_dir():
                 continue
 
-            fold3 = ep_dir.name  # episode id
+            wav_files = list(ep_dir.glob("*.wav"))
 
-            for wav in ep_dir.glob("*.wav"):
-                # HeStutters_1_0.wav → ClipId = 0
-                clip_id = int(wav.stem.split("_")[-1])
+            for wav_path in tqdm(wav_files, leave=False):
+                try:
+                    y, sr = librosa.load(wav_path, sr=SAMPLE_RATE)
+                    duration = len(y) / sr
 
-                key = (fold2, int(fold3), clip_id)
-                if key not in label_index:
-                    continue
+                    # Filter extremely short clips (optional but recommended)
+                    if duration < 0.2:
+                        continue
 
-                start, end = label_index[key]
+                    rows.append({
+                        "path": wav_path.as_posix(),
+                        "label": label_value,
+                        "duration": round(duration, 3)
+                    })
 
-                rows.append({
-                    "file_name": wav.name,
-                    "fold1": fold1,
-                    "fold2": fold2,
-                    "fold3": fold3,
-                    "start": start,
-                    "end": end,
-                    "stutter": stutter_label
-                })
-
-# -------------------- BUILD DATASET --------------------
-process_root(STUTTER_DIR, stutter_label=1)
-process_root(CLEAN_DIR, stutter_label=0)
+                except Exception as e:
+                    print(f"❌ Failed: {wav_path} | {e}")
 
 # -------------------- SAVE --------------------
-train_df = pd.DataFrame(rows)
-train_df.to_csv(OUTPUT_CSV, index=False)
+df = pd.DataFrame(rows)
+df.to_csv(OUTPUT_CSV, index=False)
 
-print(f"✅ Training dataset created: {OUTPUT_CSV}")
-print(train_df.head())
+print(f"\n✅ Training dataset created: {OUTPUT_CSV}")
+print(df.head())
+print(f"\nTotal samples: {len(df)}")
+print(df['label'].value_counts())
