@@ -3,35 +3,50 @@
 # Copyright (C) 2021 Apple Inc.
 #
 """
-Extract ONLY clean (fluent) speech clips:
-- Prolongation == 0
-- Block == 0
-- SoundRep == 0
-- WordRep == 0
-- DifficultToUnderstand == 0
+Extract ONLY stuttering clips:
+- Prolongation
+- Block
+- SoundRep
+- WordRep
 
-Save them under clean_audio/
+Save them under Model_training/stutter_clips/
 """
 
-import pathlib
+from pathlib import Path
 import argparse
 import pandas as pd
 from scipy.io import wavfile
 
+# -------------------- BASE DIR --------------------
+# download/clips/extract_stutters.py → Model_training
+BASE_DIR = Path(__file__).resolve().parents[2]
+
 # -------------------- ARGPARSE --------------------
 parser = argparse.ArgumentParser(
-    description="Extract ONLY clean speech clips from SEP-28k / FluencyBank"
+    description="Extract ONLY stuttering clips from SEP-28k / FluencyBank"
 )
 
-parser.add_argument("--labels", type=str, required=True)
-parser.add_argument("--wavs", type=str, default="wavs")
-parser.add_argument("--out", type=str, default="clean_audio")
-parser.add_argument("--progress", action="store_true")
+parser.add_argument(
+    "--labels",
+    type=str,
+    default="dataset/SEP-28k_labels.csv",
+    help="Labels CSV (relative to Model_training)"
+)
+
+parser.add_argument(
+    "--progress",
+    action="store_true",
+    help="Show progress bar"
+)
 
 args = parser.parse_args()
 
-wav_root = pathlib.Path(args.wavs)
-out_root = pathlib.Path(args.out)
+# -------------------- PATHS --------------------
+LABELS_CSV = BASE_DIR / args.labels
+WAV_ROOT = BASE_DIR / "raw_audio"
+OUT_ROOT = BASE_DIR / "stutter_clips"
+
+OUT_ROOT.mkdir(parents=True, exist_ok=True)
 
 # -------------------- HELPERS --------------------
 def norm(s: str) -> str:
@@ -47,42 +62,47 @@ def safe_name(s: str) -> str:
         .replace(":", "_")
     )
 
+# -------------------- VALIDATION --------------------
+if not LABELS_CSV.exists():
+    raise FileNotFoundError(f"Labels CSV not found: {LABELS_CSV}")
+
+if not WAV_ROOT.exists():
+    raise FileNotFoundError(f"Raw audio directory not found: {WAV_ROOT}")
+
 # -------------------- DISCOVER WAVS --------------------
 available_shows = {
     norm(p.name): p.name
-    for p in wav_root.iterdir()
+    for p in WAV_ROOT.iterdir()
     if p.is_dir()
 }
 
 # -------------------- LOAD LABELS --------------------
-df = pd.read_csv(args.labels)
+df = pd.read_csv(LABELS_CSV)
 
 required_cols = {
     "Show", "EpId", "ClipId", "Start", "Stop",
-    "Prolongation", "Block", "SoundRep",
-    "WordRep", "DifficultToUnderstand"
+    "Prolongation", "Block", "SoundRep", "WordRep"
 }
 
 missing = required_cols - set(df.columns)
 if missing:
     raise ValueError(f"Missing required columns: {missing}")
 
-# -------------------- FILTER: CLEAN SPEECH ONLY --------------------
+# -------------------- FILTER: STUTTER ONLY --------------------
 df = df[
-    (df["Prolongation"] == 0) &
-    (df["Block"] == 0) &
-    (df["SoundRep"] == 0) &
-    (df["WordRep"] == 0) &
-    (df["DifficultToUnderstand"] == 0)
+    (df["Prolongation"] > 0) |
+    (df["Block"] > 0) |
+    (df["SoundRep"] > 0) |
+    (df["WordRep"] > 0)
 ]
 
-print(f"✅ Found {len(df)} clean speech clips")
+print(f"✅ Found {len(df)} stuttering clips")
 
 # -------------------- ITERATION SETUP --------------------
 indices = range(len(df))
 if args.progress:
     from tqdm import tqdm
-    indices = tqdm(indices, desc="Extracting clean clips")
+    indices = tqdm(indices, desc="Extracting stutter clips")
 
 loaded_wav_path = None
 audio = None
@@ -107,11 +127,11 @@ for i in indices:
     start = int(row["Start"])
     stop = int(row["Stop"])
 
-    wav_path = wav_root / show / f"{episode}.wav"
+    wav_path = WAV_ROOT / show / f"{episode}.wav"
     if not wav_path.exists():
         continue
 
-    clip_dir = out_root / safe_show / episode
+    clip_dir = OUT_ROOT / safe_show / episode
     clip_dir.mkdir(parents=True, exist_ok=True)
 
     clip_path = clip_dir / f"{safe_show}_{episode}_{clip_id}.wav"
@@ -126,6 +146,6 @@ for i in indices:
     clip_audio = audio[start:stop]
     wavfile.write(clip_path, sample_rate, clip_audio)
 
-print("✅ Clean speech clip extraction complete.")
+print("✅ Stutter clips saved to Model_training/stutter_clips/")
 
-# run -> python extract_clean.py --labels SEP-28k_labels.csv --wavs wavs --out clean_audio --progress
+# run -> python download/clips/extract_stutters.py --progress

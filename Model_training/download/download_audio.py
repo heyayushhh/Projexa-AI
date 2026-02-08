@@ -16,6 +16,10 @@ import argparse
 import pandas as pd
 import requests
 
+# -------------------- BASE DIR --------------------
+# download/download_audio.py -> Model_training
+BASE_DIR = pathlib.Path(__file__).resolve().parents[1]
+
 # -------------------- ARGPARSE --------------------
 parser = argparse.ArgumentParser(
     description="Download raw audio files and convert to 16kHz mono WAVs."
@@ -24,15 +28,15 @@ parser = argparse.ArgumentParser(
 parser.add_argument(
     "--episodes",
     type=str,
-    required=True,
-    help="Path to the episodes CSV file (e.g., SEP-28k_episodes.csv)"
+    default="dataset/SEP-28k_episodes.csv",
+    help="Path to the episodes CSV (relative to Model_training)"
 )
 
 parser.add_argument(
     "--wavs",
     type=str,
-    default="wavs",
-    help="Output directory for WAV files"
+    default="raw_audio",
+    help="Output WAV directory (relative to Model_training)"
 )
 
 parser.add_argument(
@@ -42,8 +46,9 @@ parser.add_argument(
 )
 
 args = parser.parse_args()
-episode_csv = args.episodes
-wav_root = pathlib.Path(args.wavs)
+
+episode_csv = BASE_DIR / args.episodes
+wav_root = BASE_DIR / args.wavs
 
 # -------------------- CONFIG --------------------
 AUDIO_EXTS = [".mp3", ".m4a", ".mp4"]
@@ -77,6 +82,9 @@ def download_audio(url: str, output_path: pathlib.Path) -> bool:
         return False
 
 # -------------------- LOAD CSV --------------------
+if not episode_csv.exists():
+    raise FileNotFoundError(f"Episodes CSV not found: {episode_csv}")
+
 df = pd.read_csv(episode_csv, skipinitialspace=True)
 
 # -------------------- ITERATION SETUP --------------------
@@ -123,17 +131,15 @@ for i in indices:
         if not success:
             continue
 
-    # Convert
+    # Convert to 16kHz mono WAV
     subprocess.run(
         [
             "ffmpeg",
             "-y",
             "-i",
             str(audio_orig),
-            "-ac",
-            "1",
-            "-ar",
-            "16000",
+            "-ac", "1",
+            "-ar", "16000",
             str(wav_path),
         ],
         check=True,
@@ -141,11 +147,9 @@ for i in indices:
         stderr=subprocess.DEVNULL,
     )
 
-    # Cleanup
+    # Cleanup original
     audio_orig.unlink()
 
-print("✅ Audio download & conversion complete (with progress bar).")
+print("✅ Audio downloaded into Model_training/raw_audio/")
 
-
-# run
-# python download_audio.py --episodes SEP-28k_episodes.csv --wavs wavs --progress
+#run -> python download/download_audio.py --progress
