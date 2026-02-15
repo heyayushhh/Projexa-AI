@@ -9,7 +9,7 @@ OUTPUT_CSV = "train_dataset.csv"
 
 LABEL_MAP = {
     "clean_audio": 0,
-    "stutter_audio": 1
+    "stutter_clips": 1   # ✅ fixed here
 }
 
 SAMPLE_RATE = 16000
@@ -24,7 +24,7 @@ for label_folder, label_value in LABEL_MAP.items():
         print(f"⚠️ Skipping missing folder: {base_dir}")
         continue
 
-    print(f"🔹 Processing {label_folder}")
+    print(f"\n🔹 Processing {label_folder}")
 
     for show_dir in base_dir.iterdir():
         if not show_dir.is_dir():
@@ -41,7 +41,7 @@ for label_folder, label_value in LABEL_MAP.items():
                     y, sr = librosa.load(wav_path, sr=SAMPLE_RATE)
                     duration = len(y) / sr
 
-                    # Filter extremely short clips (optional but recommended)
+                    # Skip extremely short clips
                     if duration < 0.2:
                         continue
 
@@ -61,4 +61,5 @@ df.to_csv(OUTPUT_CSV, index=False)
 print(f"\n✅ Training dataset created: {OUTPUT_CSV}")
 print(df.head())
 print(f"\nTotal samples: {len(df)}")
-print(df['label'].value_counts())
+print("\nClass distribution:")
+print(df['label'].value_counts().sort_index())
