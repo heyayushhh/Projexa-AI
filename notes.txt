@@ -5,3 +5,6 @@ We attempted to use the Whisper model to segment audio at the word level and tra
 
 Created a training dataset and rewrote the whole code
 using the sep28k labels csv file wrote the code to download both the clean and voic imaprement data and created a dataset for model training with 3 sec clips of both clean and Imparement audio
+
+27-02-2026
+found a pretrainned model that has 90% accuracy on sep28K data finetunned it to detect imparements in chunks of 3 sec
