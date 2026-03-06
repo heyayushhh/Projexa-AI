@@ -7,6 +7,7 @@ scipy>=1.10
 librosa>=0.10.0
 soundfile>=0.12.1
 audioread>=3.0.0
+ffmpeg-python
 
 # Downloading
 requests>=2.28
@@ -20,5 +21,10 @@ ipython>=8.0
 jupyter>=1.0
 ipywidgets>=8.0
 
+torch
+transformers
 
 ## pip install -r requirements.txt
+
+
+
