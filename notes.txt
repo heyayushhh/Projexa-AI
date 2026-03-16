@@ -18,3 +18,11 @@ detection_model2.py detects following types of stuttering:
 4 : Interjection
 5 : Block
 It can also analyze long audio and detect stutter segments over 3s time instead of giving only one prediction for the whole file.
+
+16-03-2026
+The detection_model2.py code was enhanced to store chunk predictions and merge consecutive chunks with the same label into stutter segments, giving a more accurate representation of continuous stuttering events.
+A weighted scoring system was introduced where different stutter types are assigned severity weights and combined with segment duration to compute an overall stuttering intensity score.
+The final intensity score is then normalized and mapped to a severity level (Fluent, Mild, Moderate, Severe) for easier interpretation.
+
+The upcoming work on the project will be based on the following research paper on stuttering:
+https://arxiv.org/pdf/2501.15877
