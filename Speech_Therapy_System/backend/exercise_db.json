@@ -1,0 +1,278 @@
+{
+  "NoStutteredWords": {
+    "beginner": [
+      {
+        "name": "Smooth Speech Warm-Up",
+        "instruction": "Read each sentence slowly and clearly, focusing on maintaining a smooth and steady flow of speech. Take a breath before each sentence.",
+        "practice_material": [
+          "The sun is shining today.",
+          "I like to read books.",
+          "My dog is very friendly.",
+          "We went to the park.",
+          "She has a red bicycle."
+        ],
+        "duration": "5 minutes"
+      }
+    ],
+    "intermediate": [
+      {
+        "name": "Fluent Paragraph Reading",
+        "instruction": "Read the following paragraph at a natural pace. Focus on connecting words smoothly without rushing. Pause naturally at commas and periods.",
+        "practice_material": [
+          "The morning sun cast golden light across the quiet neighborhood. Birds were singing in the tall oak trees, and a gentle breeze carried the scent of fresh flowers. Children were getting ready for school, packing their bags and eating breakfast. It was the kind of day that made everyone feel happy and energetic."
+        ],
+        "duration": "10 minutes"
+      }
+    ],
+    "advanced": [
+      {
+        "name": "Spontaneous Speech Practice",
+        "instruction": "Speak freely about one of the topics below for at least two minutes. Focus on maintaining natural rhythm, appropriate pausing, and clear articulation throughout your speech.",
+        "practice_material": [
+          "Describe your favorite holiday and why it is special to you.",
+          "Talk about a book or movie that changed your perspective on something.",
+          "Explain a skill you have learned recently and the process of learning it."
+        ],
+        "duration": "15 minutes"
+      }
+    ]
+  },
+  "WordRep": {
+    "beginner": [
+      {
+        "name": "Single Word Fluency Drill",
+        "instruction": "Say each word once, slowly and clearly. Focus on saying the word in one smooth motion without repeating any part of it. If you repeat a word, pause, take a breath, and try again.",
+        "practice_material": [
+          "banana",
+          "elephant",
+          "computer",
+          "umbrella",
+          "butterfly",
+          "telephone",
+          "refrigerator",
+          "wonderful",
+          "adventure",
+          "chocolate"
+        ],
+        "duration": "5 minutes"
+      }
+    ],
+    "intermediate": [
+      {
+        "name": "Phrase-Level Repetition Control",
+        "instruction": "Read each phrase in one smooth breath. Concentrate on moving forward through each word without going back and repeating any word. Visualize the whole phrase before speaking.",
+        "practice_material": [
+          "A beautiful morning sunrise.",
+          "The quick brown fox jumps high.",
+          "She walked along the sandy beach.",
+          "They enjoyed a delicious homemade dinner.",
+          "The children played happily in the garden.",
+          "He carefully placed the books on the shelf."
+        ],
+        "duration": "10 minutes"
+      }
+    ],
+    "advanced": [
+      {
+        "name": "Conversational Flow Practice",
+        "instruction": "Read the following dialogue aloud, playing both roles. Focus on forward-moving speech with no word repetitions. Maintain a conversational tone and natural pauses between exchanges.",
+        "practice_material": [
+          "Person A: Good morning! Did you finish the report for today's meeting?",
+          "Person B: Yes, I completed it last night. I also added the charts you requested.",
+          "Person A: That's excellent. The manager will be really pleased with our progress.",
+          "Person B: I hope so. I spent a lot of time making sure the data was accurate.",
+          "Person A: Your attention to detail always makes a big difference. Let's review it together.",
+          "Person B: Sounds great. I'll bring my laptop to the conference room in ten minutes."
+        ],
+        "duration": "15 minutes"
+      }
+    ]
+  },
+  "SoundRep": {
+    "beginner": [
+      {
+        "name": "Initial Sound Smoothing",
+        "instruction": "Say each word slowly. Pay special attention to the first sound of each word — say it gently and only once. Avoid repeating the starting sound. Use a soft voice onset.",
+        "practice_material": [
+          "ball",
+          "table",
+          "paper",
+          "water",
+          "morning",
+          "garden",
+          "kitchen",
+          "sunset",
+          "pillow",
+          "rabbit"
+        ],
+        "duration": "5 minutes"
+      }
+    ],
+    "intermediate": [
+      {
+        "name": "Stretched Sound Sentences",
+        "instruction": "Read each sentence by gently stretching the first sound of the first word in the sentence. This helps prevent sound repetitions. Keep the stretch smooth and then glide into the rest of the sentence naturally.",
+        "practice_material": [
+          "Saturday is my favorite day of the week.",
+          "Peter picked a basket of fresh apples.",
+          "The baby smiled when she saw the puppy.",
+          "Can you come to the party tomorrow evening?",
+          "Running in the rain can be really refreshing.",
+          "My mother makes the most amazing pancakes."
+        ],
+        "duration": "10 minutes"
+      }
+    ],
+    "advanced": [
+      {
+        "name": "Sound Repetition Challenge Passage",
+        "instruction": "Read the passage below which contains many words with similar starting sounds. The goal is to say each initial sound only once without repeating it. Use gentle onset and light articulatory contact for difficult sounds.",
+        "practice_material": [
+          "Peter and Patty planned a perfect picnic in the park. They packed peanut butter sandwiches, potato chips, and plenty of pink lemonade. The path to their favorite spot passed through a patch of pretty purple flowers. Peter pointed at a pair of parrots perched in the pine tree. Patty pulled out her camera to capture the peaceful moment. It was a positively pleasant afternoon that they would always remember."
+        ],
+        "duration": "15 minutes"
+      }
+    ]
+  },
+  "Prolongation": {
+    "beginner": [
+      {
+        "name": "Quick Release Word Practice",
+        "instruction": "Say each word with a short, clean start. If you feel yourself holding onto a sound too long, stop, take a gentle breath, and try the word again with a light and quick beginning.",
+        "practice_material": [
+          "see",
+          "fast",
+          "moon",
+          "happy",
+          "fish",
+          "summer",
+          "light",
+          "name",
+          "house",
+          "flower"
+        ],
+        "duration": "5 minutes"
+      }
+    ],
+    "intermediate": [
+      {
+        "name": "Controlled Duration Sentences",
+        "instruction": "Read each sentence at a steady pace. Focus on giving each sound its natural length — not too short, not too long. If you catch yourself stretching a sound, gently release it and move to the next sound.",
+        "practice_material": [
+          "Susan saw seven stars shining in the sky.",
+          "Five friendly frogs found food by the fountain.",
+          "Many musicians make marvelous music on Mondays.",
+          "The family flew to Florida for a fun vacation.",
+          "Lee loves learning languages and listening to lectures.",
+          "She sells seashells beside the sandy seashore."
+        ],
+        "duration": "10 minutes"
+      }
+    ],
+    "advanced": [
+      {
+        "name": "Prolongation Resistance Reading",
+        "instruction": "Read the challenging paragraph below. It contains many continuant sounds (s, f, m, l, n, z) that are commonly prolonged. Focus on using light articulatory contact and releasing each sound promptly. Practice natural speech rhythm throughout.",
+        "practice_material": [
+          "Samantha finally finished her fascinating science project on Friday afternoon. She felt so satisfied and relieved. Her friends Mia and Liam came over to see the final result. They marveled at the colorful solar system model she had carefully assembled. Samantha smiled and said she was most proud of the fine details on Saturn's rings. Later that evening, the family celebrated with a lovely homemade lasagna dinner and lots of laughter."
+        ],
+        "duration": "15 minutes"
+      }
+    ]
+  },
+  "Interjection": {
+    "beginner": [
+      {
+        "name": "Clean Start Word Practice",
+        "instruction": "Say each word directly without adding any extra sounds before it. Avoid filler sounds like 'um', 'uh', 'er', or 'like' before the word. Pause silently if you need a moment, then say the word cleanly.",
+        "practice_material": [
+          "apple",
+          "window",
+          "blanket",
+          "camera",
+          "dolphin",
+          "guitar",
+          "mountain",
+          "notebook",
+          "rainbow",
+          "volcano"
+        ],
+        "duration": "5 minutes"
+      }
+    ],
+    "intermediate": [
+      {
+        "name": "Filler-Free Sentence Practice",
+        "instruction": "Read each sentence aloud without inserting any filler words or sounds (um, uh, er, like, you know). If you need a moment to think, use a silent pause instead. Record yourself and listen back to check for unintentional fillers.",
+        "practice_material": [
+          "I would like to order a large coffee with milk, please.",
+          "The meeting has been rescheduled to three o'clock on Wednesday.",
+          "Could you please explain how this machine works?",
+          "I believe the answer to the question is forty-two.",
+          "We should finish the project before the deadline next Friday.",
+          "The weather forecast says it will rain tomorrow morning."
+        ],
+        "duration": "10 minutes"
+      }
+    ],
+    "advanced": [
+      {
+        "name": "Impromptu Speaking Without Fillers",
+        "instruction": "Choose one of the topics below and speak about it for two to three minutes. Your goal is to eliminate all filler words and interjections. Replace the urge to say 'um' or 'uh' with a deliberate, silent pause. Record yourself and count any fillers afterwards.",
+        "practice_material": [
+          "Describe the process of making your favorite meal, step by step.",
+          "Explain to someone how to use a smartphone for the first time.",
+          "Talk about the advantages and disadvantages of working from home.",
+          "Describe your ideal vacation destination and what you would do there."
+        ],
+        "duration": "15 minutes"
+      }
+    ]
+  },
+  "Block": {
+    "beginner": [
+      {
+        "name": "Gentle Onset Word Practice",
+        "instruction": "Say each word using a very gentle and relaxed voice onset. Start with a soft exhale before the first sound. Do not force or push the sounds out. If you feel a block, stop, breathe out gently, and start the word again softly.",
+        "practice_material": [
+          "go",
+          "key",
+          "top",
+          "big",
+          "door",
+          "kind",
+          "talk",
+          "bright",
+          "green",
+          "plan"
+        ],
+        "duration": "5 minutes"
+      }
+    ],
+    "intermediate": [
+      {
+        "name": "Easy Onset Sentence Practice",
+        "instruction": "Read each sentence with a relaxed jaw and gentle airflow. Begin each sentence with a soft, breathy start. If you feel tension building up or a block approaching, pause, relax your jaw and throat muscles, exhale gently, and restart the sentence slowly.",
+        "practice_material": [
+          "Take your time and breathe before you begin speaking.",
+          "Go to the kitchen and bring me a glass of cold water.",
+          "Please pass the butter and the basket of warm bread.",
+          "Tell me about your day at school today.",
+          "Can you believe how quickly this year has gone by?",
+          "Dad decided to drive downtown despite the heavy traffic."
+        ],
+        "duration": "10 minutes"
+      }
+    ],
+    "advanced": [
+      {
+        "name": "Block Desensitization Passage",
+        "instruction": "Read the following passage which is loaded with plosive sounds (b, d, g, k, p, t) — the sounds that most commonly trigger blocks. Practice using light articulatory contact: let your lips and tongue touch gently rather than pressing hard. Use continuous airflow and easy onset throughout the passage.",
+        "practice_material": [
+          "Captain Greg Beck decided to take a bold trip to the distant peaks of the great mountain range. He packed a big green backpack with thick blankets, canned tuna, dark bread, and a pair of tough boots. The path began at the bottom of a steep cliff and twisted through dense patches of tall grass and broken tree trunks. Despite the difficult terrain, Greg kept a steady pace and took periodic breaks to drink cold water from a deep creek. By dusk, he had reached the top of the tallest peak. The breathtaking view of the golden valley below made every tough step completely worthwhile."
+        ],
+        "duration": "15 minutes"
+      }
+    ]
+  }
+}
