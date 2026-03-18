@@ -2,6 +2,7 @@ import pandas as pd
 import librosa
 from pathlib import Path
 from tqdm import tqdm
+from collections import Counter
 
 # ===================== CONFIG =====================
 BASE_DIR = Path(__file__).resolve().parent
@@ -13,35 +14,57 @@ OUTPUT_CSV = BASE_DIR / "train_dataset.csv"
 SAMPLE_RATE = 16000
 
 # ===================== LABEL MAP =====================
-LABEL_COLUMNS = {
-    "Prolongation": 1,
-    "Block": 2,
-    "SoundRep": 3,
-    "WordRep": 4,
-    "DifficultToUnderstand": 5,
-    "Interjection": 6   # ✅ ADDED
+LABEL_MAP = {
+    "fluent": 0,
+    "prolongation": 1,
+    "block": 2,
+    "sound_rep": 3,
+    "word_rep": 4,
+    "difficult": 5,
+    "interjection": 6
 }
 
-LABEL_NAMES = {
-    0: "fluent",
-    1: "prolongation",
-    2: "block",
-    3: "sound_rep",
-    4: "word_rep",
-    5: "difficult",
-    6: "interjection"   # ✅ ADDED
+COLUMN_TO_LABEL = {
+    "Prolongation": "prolongation",
+    "Block": "block",
+    "SoundRep": "sound_rep",
+    "WordRep": "word_rep",
+    "DifficultToUnderstand": "difficult",
+    "Interjection": "interjection"
 }
 
 # ===================== HELPERS =====================
 def safe_name(s):
     return str(s).strip().replace(" ", "").replace("/", "_").replace("\\", "_")
 
+def get_label(row):
+    """
+    Robust label assignment
+    Priority:
+    1. Any stutter type
+    2. Else fluent (NoStutteredWords / NaturalPause)
+    """
+
+    # Collect all active stutters
+    active = []
+
+    for col, label_name in COLUMN_TO_LABEL.items():
+        if row[col] > 0:
+            active.append(label_name)
+
+    # If any stutter exists → pick first (or customize priority)
+    if active:
+        return LABEL_MAP[active[0]]
+
+    # Else fluent
+    if row.get("NoStutteredWords", 0) > 0 or row.get("NaturalPause", 0) > 0:
+        return LABEL_MAP["fluent"]
+
+    return LABEL_MAP["fluent"]
+
+
 # ===================== LOAD LABELS =====================
 df_labels = pd.read_csv(LABELS_CSV)
-
-# Validate column exists
-if "Interjection" not in df_labels.columns:
-    raise ValueError("❌ 'Interjection' column not found in labels CSV")
 
 label_lookup = {}
 
@@ -52,59 +75,43 @@ for _, row in df_labels.iterrows():
 
     key = f"{show}_{ep}_{clip}"
 
-    # Default = fluent
-    assigned_label = 0
-
-    for col, val in LABEL_COLUMNS.items():
-        if row[col] > 0:
-            assigned_label = val
-            break  # first detected stutter
-
-    label_lookup[key] = assigned_label
+    label_lookup[key] = get_label(row)
 
 print(f"✅ Loaded {len(label_lookup)} label mappings")
 
 # ===================== BUILD DATASET =====================
 rows = []
 
-for label_folder in ["clean_audio", "stutter_clips"]:
-    base_dir = NORMALIZED_ROOT / label_folder
+# 🔥 IMPORTANT: scan ALL wavs regardless of folder
+all_wavs = list(NORMALIZED_ROOT.rglob("*.wav"))
 
-    if not base_dir.exists():
-        print(f"⚠️ Skipping {base_dir}")
-        continue
+print(f"\n🔹 Found {len(all_wavs)} audio files")
 
-    print(f"\n🔹 Processing {label_folder}")
+for wav_path in tqdm(all_wavs):
 
-    for show_dir in base_dir.iterdir():
-        for ep_dir in show_dir.iterdir():
+    try:
+        filename = wav_path.stem
 
-            wav_files = list(ep_dir.glob("*.wav"))
+        if filename not in label_lookup:
+            continue
 
-            for wav_path in tqdm(wav_files, leave=False):
-                try:
-                    filename = wav_path.stem
+        label = label_lookup[filename]
 
-                    if filename not in label_lookup:
-                        continue
+        y, sr = librosa.load(wav_path, sr=SAMPLE_RATE)
+        duration = len(y) / sr
 
-                    label = label_lookup[filename]
+        if duration < 0.3:
+            continue
 
-                    y, sr = librosa.load(wav_path, sr=SAMPLE_RATE)
-                    duration = len(y) / sr
+        rows.append({
+            "path": wav_path.as_posix(),
+            "label": label,
+            "label_name": list(LABEL_MAP.keys())[list(LABEL_MAP.values()).index(label)],
+            "duration": round(duration, 3)
+        })
 
-                    if duration < 0.2:
-                        continue
-
-                    rows.append({
-                        "path": wav_path.as_posix(),
-                        "label": label,
-                        "label_name": LABEL_NAMES[label],
-                        "duration": round(duration, 3)
-                    })
-
-                except Exception as e:
-                    print(f"❌ {wav_path} | {e}")
+    except Exception as e:
+        print(f"❌ {wav_path} | {e}")
 
 # ===================== SAVE =====================
 df = pd.DataFrame(rows)
@@ -113,5 +120,12 @@ df.to_csv(OUTPUT_CSV, index=False)
 print(f"\n✅ Dataset created: {OUTPUT_CSV}")
 print(f"Total samples: {len(df)}")
 
+# ===================== STATS =====================
 print("\n📊 Class distribution:")
 print(df["label_name"].value_counts())
+
+# 🔥 Optional: show imbalance ratio
+counts = Counter(df["label"])
+print("\n⚖️ Imbalance ratio:")
+for k, v in counts.items():
+    print(f"{k}: {v}")
