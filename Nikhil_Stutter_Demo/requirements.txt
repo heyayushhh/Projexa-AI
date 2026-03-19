@@ -1,0 +1,11 @@
+flask
+opencv-python
+mediapipe
+numpy
+sounddevice
+scipy
+transformers
+torch
+torchaudio
+librosa
+moviepy

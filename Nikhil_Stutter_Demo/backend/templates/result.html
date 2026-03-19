@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+</head>
+<body>
+
+<h1>Session Results</h1>
+
+<video id="videoPlayer" width="600" controls></video>
+
+<h2>Detected Stutters</h2>
+<ul id="resultsList"></ul>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+let session = params.get("session");
+
+if (!session) {
+    session = localStorage.getItem("last_session");
+}
+
+if (!session) {
+    document.body.innerHTML = "<h2>Error: No session found</h2>";
+    throw new Error("Session missing");
+}
+
+const video = document.getElementById("videoPlayer");
+const list = document.getElementById("resultsList");
+
+video.src = `/video/${session}`;
+
+fetch(`/results/${session}`)
+    .then(res => res.json())
+    .then(data => {
+        if (!Array.isArray(data) || data.length === 0) {
+            list.innerHTML = "<li>No stutters detected</li>";
+            return;
+        }
+
+        data.forEach(item => {
+            const li = document.createElement("li");
+
+            li.innerText = `${item.type} | ${item.start}s - ${item.end}s`;
+
+            li.onclick = () => {
+                video.currentTime = item.start;
+                video.play();
+            };
+
+            list.appendChild(li);
+        });
+    });
+</script>
+
+</body>
+</html>

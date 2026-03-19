@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stutter Detector</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>Stutter Detection</h1>
+
+<button id="startBtn">Start Recording</button>
+<button id="stopBtn" disabled>Stop Recording</button>
+<button onclick="goToResult()">Go to Last Result</button>
+
+<video id="preview" autoplay muted></video>
+
+<script src="/static/script.js"></script>
+
+<script>
+function goToResult() {
+    const session = localStorage.getItem("last_session");
+
+    if (!session) {
+        alert("No session found");
+        return;
+    }
+
+    window.location.href = `/result?session=${session}`;
+}
+</script>
+
+</body>
+</html>
