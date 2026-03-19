@@ -170,6 +170,8 @@ Detects:
 ---
 
 ## 📁 Project Structure
+
+```
 backend/
 │
 ├── app.py # Flask server
@@ -190,7 +192,7 @@ recordings/
 ├── video.webm
 ├── audio.wav
 └── results.json
-
+```
 
 ---
 
@@ -211,88 +213,72 @@ http://127.0.0.1:5000/app
 ```
 
 
-⚠️ Known Limitations
+### ⚠️ Known Limitations
 1. Visual Detection
 
-Not very accurate yet
-
-Uses simple motion heuristics
-
-Needs head pose estimation (yaw/pitch/roll)
+- Not very accurate yet
+- Uses simple motion heuristics
+- Needs head pose estimation (yaw/pitch/roll)
 
 2. No Real-Time Processing
 
-Works only after recording ends
+- Works only after recording ends
 
 3. No Database
 
-Everything stored locally
+- Everything stored locally
 
 4. No Authentication / User Profiles
 
 
-🚀 NEXT STEPS (IMPORTANT)
-🔥 Priority 1 — Improve Visual Detection
+### 🚀 NEXT STEPS (IMPORTANT)
+1. 🔥 Priority 1 — Improve Visual Detection
 
-Use head pose estimation
+- Use head pose estimation
+- Detect lip tremor
+- Reduce noise in detection
 
-Detect lip tremor
+2. 🔥 Priority 2 — Fluency Score System
 
-Reduce noise in detection
+- Add scoring based on:
+- frequency
+- severity
+- duration
+- Display score in UI
 
-🔥 Priority 2 — Fluency Score System
+3. 🔥 Priority 3 — Timeline Visualization
 
-Add scoring based on:
+- Add graphical timeline (chart)
+- Show stutters visually across time
 
-frequency
+4. 🔥 Priority 4 — Clip Extraction
 
-severity
+- Allow playing only specific stutter segments
 
-duration
+5. 🔥 Priority 5 — UI Improvements
 
-Display score in UI
+- Better dashboard design
+- Add icons, colors, animations
 
-🔥 Priority 3 — Timeline Visualization
+6. 🔥 Priority 6 — Real-Time Detection (Advanced)
 
-Add graphical timeline (chart)
+- Live feedback while speaking
+- Streaming audio + video inference
 
-Show stutters visually across time
+7. 🔥 Priority 7 — Backend Upgrade
 
-🔥 Priority 4 — Clip Extraction
+- Convert to API-based architecture
+- Add database (sessions history)
 
-Allow playing only specific stutter segments
-
-🔥 Priority 5 — UI Improvements
-
-Better dashboard design
-
-Add icons, colors, animations
-
-🔥 Priority 6 — Real-Time Detection (Advanced)
-
-Live feedback while speaking
-
-Streaming audio + video inference
-
-🔥 Priority 7 — Backend Upgrade
-
-Convert to API-based architecture
-
-Add database (sessions history)
-
-🧠 Future Vision
+### 🧠 Future Vision
 
 This can evolve into:
+- 🗣️ Speech therapy assistant
+- 📊 Personal fluency tracker
+- 🤖 AI speech coach
+- 🏥 Clinical support tool
 
-🗣️ Speech therapy assistant
-
-📊 Personal fluency tracker
-
-🤖 AI speech coach
-
-🏥 Clinical support tool
-
-💡 Key Insight
+### 💡 Key Insight
 
 This project is not just:
 
@@ -302,27 +288,22 @@ It is:
 
 Multimodal behavioral analysis using AI
 
-👨‍💻 For Next AI / Developer
+### 👨‍💻 For Next AI / Developer
 
 If you are continuing this project:
 
-👉 DO NOT rewrite everything
-👉 Focus on improving:
-
-Visual detection accuracy
-
-Scoring system
-
-UI polish
+- DO NOT rewrite everything 
+- Focus on improving:
+- Visual detection accuracy
+- Scoring system
+- UI polish
 
 Avoid:
+- overcomplicating backend
+- adding too many features at once
 
-overcomplicating backend
+### ✅ Current Status
 
-adding too many features at once
-
-✅ Current Status
-
-✔ MVP COMPLETE
-✔ End-to-end working
-✔ Ready for demo / portfolio
+- MVP COMPLETE
+- End-to-end working
+- Ready for demo / portfolio
