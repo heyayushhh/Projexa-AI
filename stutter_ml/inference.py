@@ -1,17 +1,18 @@
-def run_inference(classifier, chunks, timestamps):
+def run_inference(classifier, chunks, timestamps, batch_size=16):
     results = []
 
-    for chunk, (start, end) in zip(chunks, timestamps):
-        prediction = classifier(chunk)
+    for i in range(0, len(chunks), batch_size):
+        batch_chunks = chunks[i:i + batch_size]
+        batch_timestamps = timestamps[i:i + batch_size]
 
-        label = prediction[0]["label"]
-        score = prediction[0]["score"]
+        predictions = classifier(batch_chunks)
 
-        results.append({
-            "start": start,
-            "end": end,
-            "label": label,
-            "confidence": score
-        })
+        for pred, (start, end) in zip(predictions, batch_timestamps):
+            results.append({
+                "start": start,
+                "end": end,
+                "label": pred[0]["label"],
+                "confidence": float(pred[0]["score"])
+            })
 
     return results
