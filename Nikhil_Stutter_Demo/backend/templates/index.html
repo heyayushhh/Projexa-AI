@@ -1,30 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Stutter Detector</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FluencyAI - Speech Analysis</title>
+    <meta name="description" content="FluencyAI helps you analyze and improve your speech fluency with AI-powered detection and feedback.">
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
-<h1>Stutter Detection</h1>
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="/app" class="nav-brand">
+        <img src="/static/logo.jpeg" alt="FluencyAI" class="nav-logo">
+        <span class="nav-title">FluencyAI</span>
+    </a>
+    <div class="nav-links">
+        <a href="/app" class="nav-link active">Record</a>
+        <a href="javascript:void(0)" onclick="goToResult()" class="nav-link">Results</a>
+    </div>
+</nav>
 
-<button id="startBtn">Start Recording</button>
-<button id="stopBtn" disabled>Stop Recording</button>
-<button onclick="goToResult()">Go to Last Result</button>
+<!-- PROCESSING OVERLAY -->
+<div id="processingOverlay" class="processing-overlay">
+    <div class="spinner"></div>
+    <p class="processing-text">Analyzing your session</p>
+    <p class="processing-subtext">This usually takes 10-30 seconds</p>
+</div>
 
-<video id="preview" autoplay muted></video>
+<div class="container">
+
+    <div class="page-header">
+        <h1 class="page-title">Record a Session</h1>
+        <p class="page-subtitle">Speak at your own pace. The system will analyze your speech when you're done.</p>
+    </div>
+
+    <!-- STEP INDICATOR -->
+    <div class="steps">
+        <div id="stepReady" class="step active">
+            <span class="step-num">1</span>
+            Ready
+        </div>
+        <div id="connectorOne" class="step-line"></div>
+        <div id="stepRecording" class="step">
+            <span class="step-num">2</span>
+            Recording
+        </div>
+        <div id="connectorTwo" class="step-line"></div>
+        <div id="stepProcessing" class="step">
+            <span class="step-num">3</span>
+            Analyzing
+        </div>
+    </div>
+
+    <!-- RECORD SECTION -->
+    <div class="record-section">
+        <div class="video-preview-wrapper">
+            <div id="recordingDot" class="recording-dot"></div>
+            <div id="timerOverlay" class="timer-overlay">00:00</div>
+            <video id="preview" autoplay muted playsinline></video>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn" class="primary">Start Recording</button>
+            <button id="stopBtn" class="danger" disabled>Stop</button>
+            <button class="secondary" onclick="goToResult()">View Last Session</button>
+        </div>
+
+        <p class="hint">Take your time. There is no rush.</p>
+    </div>
+
+    <!-- SESSION HISTORY -->
+    <div class="history-section">
+        <div class="card">
+            <h2>Past Sessions</h2>
+            <div id="historyList" class="history-list"></div>
+        </div>
+    </div>
+
+</div>
 
 <script src="/static/script.js"></script>
 
 <script>
 function goToResult() {
     const session = localStorage.getItem("last_session");
-
-    if (!session) {
-        alert("No session found");
-        return;
-    }
-
+    if (!session) return alert("No session found. Record one first.");
     window.location.href = `/result?session=${session}`;
 }
 </script>

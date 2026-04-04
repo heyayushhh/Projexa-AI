@@ -1,95 +1,394 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Results</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FluencyAI - Session Results</title>
+    <meta name="description" content="View your speech analysis results, fluency score, and personalized suggestions.">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<h1>Speech Analysis Dashboard</h1>
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="/app" class="nav-brand">
+        <img src="/static/logo.jpeg" alt="FluencyAI" class="nav-logo">
+        <span class="nav-title">FluencyAI</span>
+    </a>
+    <div class="nav-links">
+        <a href="/app" class="nav-link">Record</a>
+        <a href="#" class="nav-link active">Results</a>
+    </div>
+</nav>
 
-<div class="card">
-    <h2>📊 Summary</h2>
-    <div id="summaryBox"></div>
-</div>
+<div class="container">
 
-<div class="card">
-    <h2>🧠 Insights</h2>
-    <ul id="insightsList"></ul>
-</div>
+    <a href="/app" class="back-link">&larr; New Session</a>
 
-<div class="card">
-    <h2>🎥 Recording</h2>
-    <video id="videoPlayer" controls></video>
-</div>
+    <!-- FLUENCY SCORE -->
+    <div class="card score-section" id="scoreSection">
+        <div class="score-ring" id="scoreRing">
+            <svg viewBox="0 0 160 160">
+                <circle class="score-ring-bg" cx="80" cy="80" r="70" />
+                <circle class="score-ring-fill" id="scoreCircle" cx="80" cy="80" r="70" />
+            </svg>
+            <div class="score-inner">
+                <div class="score-num" id="scoreNumber">&mdash;</div>
+                <div class="score-label">Fluency Score</div>
+            </div>
+        </div>
+        <p class="score-msg" id="scoreMessage"></p>
+    </div>
 
-<div class="card">
-    <h2>📍 Detected Stutters</h2>
-    <ul id="resultsList"></ul>
+    <!-- VIDEO -->
+    <div class="card video-card">
+        <video id="videoPlayer" controls></video>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="card timeline-section" id="timelineSection">
+        <h2>Speech Timeline</h2>
+        <p class="section-desc">Click any block to jump to that moment in the recording</p>
+        <div class="timeline-track" id="timelineTrack"></div>
+        <div class="timeline-times" id="timelineTimes"></div>
+        <div class="legend" id="legendContainer"></div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="grid">
+        <div class="card">
+            <h3>Events Detected</h3>
+            <p id="totalEvents" class="stat-value"></p>
+        </div>
+        <div class="card">
+            <h3>Most Common</h3>
+            <p id="commonType" class="stat-value"></p>
+        </div>
+        <div class="card">
+            <h3>Visual Cues</h3>
+            <p id="visualEvents" class="stat-value"></p>
+        </div>
+    </div>
+
+    <!-- INSIGHTS -->
+    <div class="card" id="insightsCard">
+        <h2>Insights</h2>
+        <div id="insightsList"></div>
+    </div>
+
+    <!-- SUGGESTIONS -->
+    <div class="card" id="suggestionsCard" style="display: none;">
+        <h2>Suggestions</h2>
+        <div id="suggestionsList"></div>
+    </div>
+
+    <!-- CLEAN SPEECH (NEW FEATURE) -->
+    <div class="card clean-speech-section" id="cleanSpeechSection">
+        <h2>Fluent Speech Output</h2>
+        <p class="section-desc">Generate a clean, fluent version of what you said</p>
+
+        <button id="generateCleanBtn" class="primary" onclick="generateCleanSpeech()">
+            Generate Clean Version
+        </button>
+
+        <div id="generateLoader" class="generate-loader">
+            <div class="spinner"></div>
+            <span>Transcribing and generating audio...</span>
+        </div>
+
+        <div id="cleanSpeechContent" class="clean-speech-content">
+            <div id="transcriptBox" class="transcript-box"></div>
+            <div class="audio-player-wrapper">
+                <audio id="cleanAudioPlayer" controls></audio>
+            </div>
+            <div class="clean-actions">
+                <a id="downloadCleanBtn" class="btn btn-secondary" download>Download Audio</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVENTS -->
+    <div class="card">
+        <h2>All Detected Moments</h2>
+        <p class="section-desc">Click any event to watch it in the video</p>
+        <div id="resultsList"></div>
+    </div>
+
+    <!-- BOTTOM ACTION -->
+    <div style="margin-top: 24px; text-align: center;">
+        <a href="/app" class="btn btn-primary" style="padding: 12px 32px; font-size: 14px;">Record Another Session</a>
+    </div>
+
 </div>
 
 <script>
+// --- CONSTANTS ---
+const DEFAULT_COLORS = {
+    "prolongation": "#E8A838", "block": "#E05D5D", "sound_rep": "#7C6BB5",
+    "word_rep": "#5A6ACF", "difficult": "#C44040", "interjection": "#2BA882",
+    "head_jerk": "#2AA5BD"
+};
+
+const DEFAULT_NAMES = {
+    "prolongation": "Prolongation", "block": "Block", "sound_rep": "Sound Repetition",
+    "word_rep": "Word Repetition", "difficult": "Difficult Speech",
+    "interjection": "Interjection", "head_jerk": "Head Movement"
+};
+
+// --- SESSION LOADING ---
 const params = new URLSearchParams(window.location.search);
-let session = params.get("session");
+let session = params.get("session") || localStorage.getItem("last_session");
 
 if (!session) {
-    session = localStorage.getItem("last_session");
+    document.querySelector(".container").innerHTML = `
+        <div class="empty-state" style="padding: 80px 20px;">
+            <h2 style="color: var(--text); margin-bottom: 8px;">No session found</h2>
+            <p style="color: var(--text-muted);">Record a session first, then come back to see results.</p>
+            <a href="/app" class="btn btn-primary" style="margin-top: 16px;">Go to Recording</a>
+        </div>`;
+} else {
+    loadResults();
 }
 
-if (!session) {
-    document.body.innerHTML = "<h2>Error: No session found</h2>";
-    throw new Error("Session missing");
+function loadResults() {
+    const video = document.getElementById("videoPlayer");
+    video.src = `/video/${session}`;
+
+    fetch(`/results/${session}`)
+        .then(res => {
+            if (!res.ok) throw new Error("Results not found");
+            return res.json();
+        })
+        .then(data => {
+            const summary = data.summary;
+            const colors = data.stutter_colors || DEFAULT_COLORS;
+            const names = data.friendly_names || DEFAULT_NAMES;
+
+            // Summary cards
+            document.getElementById("totalEvents").innerText = summary.total_events;
+            document.getElementById("commonType").innerText = names[summary.most_common] || summary.most_common;
+            document.getElementById("visualEvents").innerText = summary.visual_events;
+
+            // Fluency score
+            if (summary.fluency_score !== undefined && summary.fluency_score !== null) {
+                animateScore(summary.fluency_score);
+            }
+
+            // Timeline
+            if (summary.duration > 0 && data.events.length > 0) {
+                buildTimeline(data.events, summary.duration, colors, names, video);
+            } else {
+                document.getElementById("timelineSection").style.display = "none";
+            }
+
+            // Insights
+            const insightsList = document.getElementById("insightsList");
+            data.insights.forEach(text => {
+                const div = document.createElement("div");
+                div.className = "insight-item";
+                div.innerHTML = `<div class="insight-marker"></div><span>${text}</span>`;
+                insightsList.appendChild(div);
+            });
+
+            // Suggestions
+            if (data.suggestions && data.suggestions.length > 0) {
+                document.getElementById("suggestionsCard").style.display = "block";
+                const sugList = document.getElementById("suggestionsList");
+
+                data.suggestions.forEach((item, i) => {
+                    const div = document.createElement("div");
+                    div.className = "suggestion-item";
+                    div.innerHTML = `
+                        <div class="suggestion-num">${i + 1}</div>
+                        <div class="suggestion-body">
+                            ${item.text}
+                            <div class="suggestion-label">${item.friendly_name}</div>
+                        </div>
+                    `;
+                    sugList.appendChild(div);
+                });
+            }
+
+            // Events list
+            const list = document.getElementById("resultsList");
+            const events = data.events;
+
+            if (!events || events.length === 0) {
+                list.innerHTML = `<div class="empty-state">No speech difficulty detected. Great session!</div>`;
+                return;
+            }
+
+            events.forEach(item => {
+                const div = document.createElement("div");
+                div.className = "event";
+
+                const color = colors[item.type] || "#9BA5B1";
+                const name = names[item.type] || item.type;
+                const conf = item.confidence ? `${Math.round(item.confidence * 100)}%` : "";
+
+                div.style.borderLeftColor = color;
+                div.innerHTML = `
+                    <div class="event-dot" style="background: ${color}"></div>
+                    <div class="event-info">
+                        <div class="event-type">${name}</div>
+                        <div class="event-time">${item.start}s \u2192 ${item.end}s</div>
+                    </div>
+                    ${conf ? `<span class="event-badge">${conf}</span>` : ""}
+                `;
+
+                div.onclick = () => {
+                    video.currentTime = item.start;
+                    video.play();
+                    video.scrollIntoView({ behavior: "smooth", block: "center" });
+                };
+
+                list.appendChild(div);
+            });
+        })
+        .catch(err => {
+            console.error("Error loading results:", err);
+            document.querySelector(".container").innerHTML = `
+                <div class="empty-state" style="padding: 80px 20px;">
+                    <h2 style="color: var(--text); margin-bottom: 8px;">Could not load results</h2>
+                    <p style="color: var(--text-muted);">${err.message}</p>
+                    <a href="/app" class="btn btn-primary" style="margin-top: 16px;">Go to Recording</a>
+                </div>`;
+        });
 }
 
-const video = document.getElementById("videoPlayer");
-const list = document.getElementById("resultsList");
-const summaryBox = document.getElementById("summaryBox");
-const insightsList = document.getElementById("insightsList");
+// --- SCORE ANIMATION ---
+function animateScore(score) {
+    const el = document.getElementById("scoreNumber");
+    const circle = document.getElementById("scoreCircle");
+    const msg = document.getElementById("scoreMessage");
 
-video.src = `/video/${session}`;
+    const circumference = 2 * Math.PI * 70;
+    const offset = circumference - (score / 100) * circumference;
 
-fetch(`/results/${session}`)
-    .then(res => res.json())
-    .then(data => {
+    let color;
+    if (score >= 80) color = "#2BA882";
+    else if (score >= 60) color = "#E8A838";
+    else if (score >= 40) color = "#E8A838";
+    else color = "#E05D5D";
 
-        // SUMMARY
-        const summary = data.summary;
-        summaryBox.innerHTML = `
-            <p><strong>Total Events:</strong> ${summary.total_events}</p>
-            <p><strong>Most Common:</strong> ${summary.most_common}</p>
-            <p><strong>Visual Events:</strong> ${summary.visual_events}</p>
-        `;
+    // Update CSS to match radius
+    circle.style.strokeDasharray = circumference;
+    circle.style.strokeDashoffset = circumference;
 
-        // INSIGHTS
-        data.insights.forEach(text => {
-            const li = document.createElement("li");
-            li.innerText = text;
-            insightsList.appendChild(li);
-        });
+    setTimeout(() => {
+        circle.style.strokeDashoffset = offset;
+        circle.style.stroke = color;
+    }, 200);
 
-        // EVENTS
-        const events = data.events;
+    // Count up
+    let current = 0;
+    const duration = 1200;
+    const start = performance.now();
 
-        if (!events || events.length === 0) {
-            list.innerHTML = "<li>No stutters detected</li>";
-            return;
-        }
+    function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        current = Math.round(eased * score);
+        el.textContent = current;
+        if (progress < 1) requestAnimationFrame(tick);
+    }
 
-        events.forEach(item => {
-            const li = document.createElement("li");
+    requestAnimationFrame(tick);
 
-            li.innerText = `${item.type} | ${item.start}s - ${item.end}s`;
+    // Message
+    if (score >= 80) msg.textContent = "Excellent fluency. Keep it up.";
+    else if (score >= 60) msg.textContent = "Good progress. You're on the right track.";
+    else if (score >= 40) msg.textContent = "Steady improvement. Every session counts.";
+    else msg.textContent = "Showing up is what matters. Keep practicing.";
+}
 
-            li.classList.add(item.type); // 🎨 color
+// --- TIMELINE ---
+function buildTimeline(events, duration, colors, names, video) {
+    const track = document.getElementById("timelineTrack");
+    const times = document.getElementById("timelineTimes");
+    const legend = document.getElementById("legendContainer");
+    const typesUsed = new Set();
 
-            li.onclick = () => {
-                video.currentTime = item.start;
-                video.play();
-            };
+    events.forEach(event => {
+        const left = (event.start / duration) * 100;
+        const width = Math.max(((event.end - event.start) / duration) * 100, 0.5);
+        const color = colors[event.type] || "#9BA5B1";
+        typesUsed.add(event.type);
 
-            list.appendChild(li);
-        });
+        const bar = document.createElement("div");
+        bar.className = "timeline-block";
+        bar.style.left = `${left}%`;
+        bar.style.width = `${width}%`;
+        bar.style.background = color;
+        bar.title = `${names[event.type] || event.type}: ${event.start}s \u2192 ${event.end}s`;
+        bar.onclick = () => {
+            video.currentTime = event.start;
+            video.play();
+            video.scrollIntoView({ behavior: "smooth", block: "center" });
+        };
+        track.appendChild(bar);
     });
+
+    times.innerHTML = `
+        <span>0:00</span>
+        <span>${fmtTime(duration / 2)}</span>
+        <span>${fmtTime(duration)}</span>
+    `;
+
+    typesUsed.forEach(type => {
+        const item = document.createElement("div");
+        item.className = "legend-item";
+        item.innerHTML = `<div class="legend-dot" style="background:${colors[type] || '#9BA5B1'}"></div><span>${names[type] || type}</span>`;
+        legend.appendChild(item);
+    });
+}
+
+function fmtTime(s) {
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return `${m}:${sec.toString().padStart(2, "0")}`;
+}
+
+// --- CLEAN SPEECH GENERATION ---
+function generateCleanSpeech() {
+    const btn = document.getElementById("generateCleanBtn");
+    const loader = document.getElementById("generateLoader");
+    const content = document.getElementById("cleanSpeechContent");
+
+    btn.style.display = "none";
+    loader.classList.add("visible");
+
+    fetch(`/generate-clean/${session}`, { method: "POST" })
+        .then(res => {
+            if (!res.ok) return res.json().then(d => { throw new Error(d.error || "Generation failed"); });
+            return res.json();
+        })
+        .then(data => {
+            loader.classList.remove("visible");
+
+            if (data.status === "ready") {
+                // Show transcript
+                const transcriptBox = document.getElementById("transcriptBox");
+                transcriptBox.textContent = `"${data.text}"`;
+
+                // Set audio source
+                const player = document.getElementById("cleanAudioPlayer");
+                player.src = data.url;
+
+                // Set download link
+                const dlBtn = document.getElementById("downloadCleanBtn");
+                dlBtn.href = `/download-clean/${session}`;
+
+                content.classList.add("visible");
+            }
+        })
+        .catch(err => {
+            loader.classList.remove("visible");
+            btn.style.display = "inline-flex";
+            alert(`Clean speech generation failed:\n${err.message}`);
+        });
+}
 </script>
 
 </body>
