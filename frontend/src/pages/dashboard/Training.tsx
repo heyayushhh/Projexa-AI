@@ -1,5 +1,4 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useThemeStore } from '../../store/themeStore';
 import { dashboardApi } from '../../services/api';
 import { useState, useEffect } from 'react';
 import { EXERCISES } from './exerciseData';
@@ -7,7 +6,6 @@ import type { Exercise } from './exerciseData';
 import SpeechPractice from './SpeechPractice';
 
 const Training = () => {
-  const { isDark } = useThemeStore();
   const [progress, setProgress] = useState<Record<number, { score: number; is_correct: boolean }>>({});
   const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(null);
   const [activeTab, setActiveTab] = useState<Exercise['type']>('SoundRep');
@@ -97,9 +95,6 @@ const Training = () => {
     // Level 1 of Easy is always unlocked
     if (ex.level === 1 && ex.difficulty === 'Easy') return true;
     
-    // Convert current exercise ID to number for consistent lookup
-    const currentId = Number(ex.id);
-
     // Rule: Previous level in the SAME category (activeTab) must be completed with is_correct: true
     const categoryExercises = EXERCISES.filter(e => e.type === activeTab);
     
@@ -168,7 +163,7 @@ const Training = () => {
             </div>
 
             <div className="flex flex-wrap justify-center gap-8 md:gap-14 relative">
-              {groupedExercises[difficulty].map((ex, i) => {
+              {groupedExercises[difficulty].map((ex) => {
                 const unlocked = isUnlocked(ex);
                 const levelProgress = progress[ex.id];
                 const isDone = levelProgress?.is_correct;

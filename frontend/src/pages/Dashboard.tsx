@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import { useThemeStore } from '../store/themeStore';
 import Sidebar from '../components/Sidebar';
-import { Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import BreathPacer from '../components/BreathPacer';
 
 const Dashboard: React.FC = () => {
   const { isDark, user, token } = useThemeStore();
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     if (!token) {

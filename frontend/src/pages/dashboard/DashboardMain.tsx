@@ -150,7 +150,7 @@ const DashboardMain: React.FC = () => {
   );
 };
 
-const StatCard = ({ icon: Icon, label, value, color, isDark }: any) => (
+const StatCard = ({ icon: Icon, label, value, color }: any) => (
   <div className="p-6 rounded-[2rem] border border-border-subtle bg-card-bg shadow-soft hover:shadow-premium transition-all duration-500 group">
     <div className="flex items-center justify-between mb-4">
       <div className={`p-3 rounded-2xl bg-bg-primary group-hover:scale-110 transition-transform duration-500 ${color}`}>

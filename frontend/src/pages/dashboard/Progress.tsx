@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { dashboardApi } from '../../services/api';
-import { useThemeStore } from '../../store/themeStore';
 
 const Progress = () => {
-  const { isDark } = useThemeStore();
   const [stats, setStats] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -31,7 +29,6 @@ const Progress = () => {
   }
 
   const scores = stats?.fluency_trend?.map((s: any) => s.score) || [0, 0, 0, 0, 0, 0, 0];
-  const maxScore = 100;
 
   return (
     <div className="max-w-5xl mx-auto space-y-12 pb-20">
@@ -81,7 +78,7 @@ const Progress = () => {
               transition={{ duration: 1.5, delay: 0.5 }}
               d={`
                 M 0 300
-                ${scores.map((s, i) => `L ${i * 100} ${300 - (s * 3)}`).join(' ')}
+                ${scores.map((s: number, i: number) => `L ${i * 100} ${300 - (s * 3)}`).join(' ')}
                 L ${(scores.length - 1) * 100} 300
                 Z
               `}
@@ -101,7 +98,7 @@ const Progress = () => {
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               transition={{ duration: 2, ease: "easeInOut" }}
-              d={scores.map((s, i) => `${i === 0 ? 'M' : 'L'} ${i * 100} ${300 - (s * 3)}`).join(' ')}
+              d={scores.map((s: number, i: number) => `${i === 0 ? 'M' : 'L'} ${i * 100} ${300 - (s * 3)}`).join(' ')}
               fill="none"
               stroke="var(--color-accent)"
               strokeWidth="4"
@@ -111,7 +108,7 @@ const Progress = () => {
             />
 
             {/* Data points */}
-            {scores.map((s, i) => (
+            {scores.map((s: number, i: number) => (
               <g key={i}>
                 <motion.circle
                   initial={{ r: 0 }}

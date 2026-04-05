@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useThemeStore } from '../../store/themeStore';
 import type { Exercise } from './exerciseData';
 
 interface SpeechPracticeProps {
@@ -20,7 +19,6 @@ interface SpeechPracticeProps {
 const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 
 const SpeechPractice: React.FC<SpeechPracticeProps> = ({ exercise, onComplete, onClose }) => {
-  const { isDark } = useThemeStore();
   const [isRecording, setIsRecording] = useState(false);
   const [transcript, setTranscript] = useState('');
   const transcriptRef = useRef(''); // 🔥 USE REF TO AVOID RACE CONDITIONS
