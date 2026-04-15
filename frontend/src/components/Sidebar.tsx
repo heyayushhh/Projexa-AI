@@ -39,11 +39,11 @@ const Sidebar: React.FC<SidebarProps> = ({ className, onNavigate, onClose, showC
     <aside className={`w-72 flex flex-col border-r border-border-subtle bg-sidebar-bg h-screen transition-colors duration-300 ${className || ''}`}>
       <div className="p-6 sm:p-8">
         <div className="flex items-center justify-between gap-3 mb-10 sm:mb-12 px-4">
-          <div className="flex items-center gap-3 min-w-0">
-            <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center shadow-lg shadow-accent/20 shrink-0">
-              <span className="text-white font-bold text-xl">V</span>
+          <div className="flex items-center gap-2 min-w-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-accent flex items-center justify-center shadow-lg shadow-accent/20 shrink-0">
+              <span className="text-white font-bold text-lg sm:text-xl">V</span>
             </div>
-            <span className="text-xl sm:text-2xl font-bold tracking-tight text-text-primary whitespace-nowrap">
+            <span className="text-lg sm:text-2xl font-bold tracking-tight text-text-primary whitespace-nowrap leading-none">
               VocaCare
             </span>
           </div>

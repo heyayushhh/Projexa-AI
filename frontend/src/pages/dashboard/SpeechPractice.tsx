@@ -322,22 +322,22 @@ const SpeechPractice: React.FC<SpeechPracticeProps> = ({ exercise, onComplete, o
             "{exercise.sentence}"
           </p>
 
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="p-4 rounded-2xl bg-bg-primary/40 border border-border-subtle">
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 auto-rows-fr">
+            <div className="p-4 rounded-2xl bg-bg-primary/40 border border-border-subtle h-full flex flex-col">
               <p className="text-[10px] font-black uppercase tracking-widest text-text-secondary mb-2">Target Focus</p>
-              <p className="text-sm sm:text-base font-bold text-text-primary break-words">{exercise.targetFocus}</p>
+              <p className="text-sm sm:text-base font-bold text-text-primary break-words flex-1">{exercise.targetFocus}</p>
             </div>
-            <div className="p-4 rounded-2xl bg-bg-primary/40 border border-border-subtle">
+            <div className="p-4 rounded-2xl bg-bg-primary/40 border border-border-subtle h-full flex flex-col">
               <p className="text-[10px] font-black uppercase tracking-widest text-text-secondary mb-2">Technique</p>
-              <p className="text-sm sm:text-base font-bold text-text-primary break-words">{exercise.technique}</p>
+              <p className="text-sm sm:text-base font-bold text-text-primary break-words flex-1">{exercise.technique}</p>
             </div>
-            <div className="p-4 rounded-2xl bg-bg-primary/40 border border-border-subtle">
+            <div className="p-4 rounded-2xl bg-bg-primary/40 border border-border-subtle h-full flex flex-col">
               <p className="text-[10px] font-black uppercase tracking-widest text-text-secondary mb-2">Pacing</p>
-              <p className="text-sm sm:text-base font-bold text-text-primary break-words">{exercise.pacing}</p>
+              <p className="text-sm sm:text-base font-bold text-text-primary break-words flex-1">{exercise.pacing}</p>
             </div>
-            <div className="p-4 rounded-2xl bg-bg-primary/40 border border-border-subtle">
+            <div className="p-4 rounded-2xl bg-bg-primary/40 border border-border-subtle h-full flex flex-col">
               <p className="text-[10px] font-black uppercase tracking-widest text-text-secondary mb-2">Tip</p>
-              <p className="text-sm sm:text-base font-bold text-text-primary break-words">{exercise.tip}</p>
+              <p className="text-sm sm:text-base font-bold text-text-primary break-words flex-1">{exercise.tip}</p>
             </div>
           </div>
         </div>
