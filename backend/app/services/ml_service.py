@@ -135,7 +135,7 @@ async def run_stutter_analysis(file_path: str) -> Dict[str, Any]:
             {"timestamp": event["start"], "type": event["type"], "confidence": event["confidence"]}
             for event in events
         ]
-        transcript = "Transcript generation is not enabled in backend yet."
+        transcript = "Transcript generation is not enabled in the backend yet."
         return {
             "fluencyScore": fluency_score,
             "stutterEvents": timeline_events,
