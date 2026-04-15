@@ -1,278 +1,475 @@
 {
+  "meta": {
+    "version": "2.0",
+    "clinical_basis": [
+      "GILCU — Ryan & Van Kirk (1974, 1978): Gradual Increase in Length and Complexity of Utterance",
+      "Van Riper Stuttering Modification Therapy (1973): Identification, Desensitization, Modification (Cancellation, Pull-out, Preparatory Set), Stabilization",
+      "Fluency Shaping / Prolonged Speech — Camperdown Program (O'Brian et al., 2003); DAF-supported speech restructuring",
+      "ARTS — Avoidance Reduction Therapy for Stuttering (Sisskin, 2018): fear-hierarchy desensitization",
+      "ASHA Evidence-Based Practice Guidelines for Fluency Disorders (2024)",
+      "Brignell et al. (2020): Fluency shaping reduces stuttering 50–57%"
+    ],
+    "disclaimer": "These exercises are designed as structured home-practice supplements to professional SLP therapy. They do not replace clinical evaluation or individualized treatment. Success criteria follow GILCU standards: fewer than 2 stuttered words per minute in criterion-based testing (Shenker, 2005)."
+  },
+
   "NoStutteredWords": {
-    "beginner": [
-      {
-        "name": "Smooth Speech Warm-Up",
-        "instruction": "Read each sentence slowly and clearly, focusing on maintaining a smooth and steady flow of speech. Take a breath before each sentence.",
-        "practice_material": [
-          "The sun is shining today.",
-          "I like to read books.",
-          "My dog is very friendly.",
-          "We went to the park.",
-          "She has a red bicycle."
-        ],
-        "duration": "5 minutes"
-      }
-    ],
-    "intermediate": [
-      {
-        "name": "Fluent Paragraph Reading",
-        "instruction": "Read the following paragraph at a natural pace. Focus on connecting words smoothly without rushing. Pause naturally at commas and periods.",
-        "practice_material": [
-          "The morning sun cast golden light across the quiet neighborhood. Birds were singing in the tall oak trees, and a gentle breeze carried the scent of fresh flowers. Children were getting ready for school, packing their bags and eating breakfast. It was the kind of day that made everyone feel happy and energetic."
-        ],
-        "duration": "10 minutes"
-      }
-    ],
-    "advanced": [
-      {
-        "name": "Spontaneous Speech Practice",
-        "instruction": "Speak freely about one of the topics below for at least two minutes. Focus on maintaining natural rhythm, appropriate pausing, and clear articulation throughout your speech.",
-        "practice_material": [
-          "Describe your favorite holiday and why it is special to you.",
-          "Talk about a book or movie that changed your perspective on something.",
-          "Explain a skill you have learned recently and the process of learning it."
-        ],
-        "duration": "15 minutes"
-      }
-    ]
+    "clinical_approach": "Fluency Shaping — Prolonged Speech / Camperdown Program",
+    "target_behavior": "Achieve stutter-free speech by restructuring the entire speech pattern using soft onset, continuous airflow, and smooth transitions rather than modifying individual stutter moments",
+    "beginner": {
+      "name": "Prolonged Speech — Word Level (GILCU Step 1–6)",
+      "clinical_method": "GILCU (Ryan & Van Kirk, 1978) — Establishment Phase",
+      "duration": "8 minutes",
+      "target_fluency_rate": "Less than 2 stuttered syllables per minute",
+      "goal": "Establish stutter-free speech at the single word and short phrase level using gentle onset and slightly prolonged vowels. This is Step 1 of the GILCU 54-step hierarchy.",
+      "instruction": "Before each item, take a relaxed breath and let it go slightly before you start speaking. Initiate every word with a soft, breathy voice onset — your vocal cords should come together gently, never slam. Slightly lengthen the first vowel of each word (e.g., 'suuun' for 'sun'). This is Prolonged Speech at word level — the foundation of the Camperdown Program. Say each item once. If a stutter occurs: stop completely, pause 3 seconds, breathe, restart the word with softer onset.",
+      "technique_cue": "Gentle onset + vowel stretch + forward movement. No forcing, no rushing.",
+      "practice_material": [
+        "sun",
+        "sun is shining",
+        "the sun is shining",
+        "the sun is shining today",
+        "I like",
+        "I like to read",
+        "I like to read books",
+        "my dog",
+        "my dog is friendly",
+        "we went to the park",
+        "she has a red bicycle",
+        "he drinks cold water"
+      ],
+      "progression_rule": "Move to Intermediate only after completing all 12 items with zero stutters across two consecutive sessions.",
+      "self_monitoring": "After each item, rate your smoothness: 1 = hard stutter, 2 = slight tension, 3 = smooth. Aim for all 3s before progressing.",
+      "self_check": "Did your throat feel completely relaxed at word onset? Were vowels slightly stretched? Zero forcing?"
+    },
+    "intermediate": {
+      "name": "Prolonged Speech — Sentence to Paragraph (GILCU Step 7–14)",
+      "clinical_method": "GILCU Establishment Phase Steps 7–14 + Camperdown smooth speech transfer",
+      "duration": "14 minutes",
+      "target_fluency_rate": "Less than 2 stuttered syllables per minute across all sentences",
+      "goal": "Transfer stutter-free smooth speech from isolated sentences to multi-sentence paragraph reading with natural pausing at clause boundaries. Mirrors GILCU clinic steps 7–14.",
+      "instruction": "Read each sentence at a rate of approximately 100 syllables per minute — noticeably slower than everyday speech but not robotically slow. Use continuous phonation: voice stays 'on' between words, fading only at natural commas and periods. At each comma or period: pause 1 full second, breathe, then re-initiate with soft onset. Do NOT chunk words with hard stops. The speech should feel slightly 'stretched' but still natural. Read each item twice: Trial A at 100 spm (slow), Trial B at your natural pace while retaining the smooth onset.",
+      "technique_cue": "Continuous phonation + 1-second pause at punctuation + soft re-onset after every pause.",
+      "practice_material": [
+        "The morning sun cast golden light across the quiet neighborhood.",
+        "Birds were singing in the tall oak trees, and a gentle breeze carried the scent of fresh flowers.",
+        "Children were getting ready for school, packing their bags and eating breakfast at the kitchen table.",
+        "It was the kind of peaceful morning that made everyone feel calm and ready for the day ahead.",
+        "My colleague asked me to review the quarterly report before the afternoon meeting.",
+        "I told her I would need about forty minutes to go through the data carefully.",
+        "She nodded and said she appreciated the extra care I always put into my work.",
+        "Later, we presented the findings together and the manager was very pleased with the results.",
+        "The doctor recommended a short walk every morning to help manage stress levels effectively.",
+        "She found that even ten minutes outside made a significant difference to how she felt each day."
+      ],
+      "progression_rule": "Achieve zero stutters on 8 of 10 sentences in two consecutive sessions before advancing.",
+      "self_monitoring": "After every two sentences, note: Was continuous phonation maintained? Were pauses clean and silent? Did re-onset feel soft?",
+      "self_check": "Did speech feel like water flowing rather than a series of separate sounds? Could you maintain soft onset after every pause?"
+    },
+    "advanced": {
+      "name": "Camperdown Spontaneous Speech — Hierarchy Transfer",
+      "clinical_method": "Camperdown Program Phase 2 (O'Brian et al., 2003) — Naturalness training + GILCU conversation steps 15–18",
+      "duration": "20 minutes",
+      "target_fluency_rate": "Less than 2 stuttered words per minute in spontaneous monologue; naturalness rating of 8–10 on a 10-point scale",
+      "goal": "Transfer prolonged speech techniques into spontaneous, cognitively demanding speech while maintaining naturalness. Replicate the communicative demands of real-life high-stakes speaking situations.",
+      "instruction": "You will speak spontaneously on each topic for 2–3 minutes without preparation. Apply the full Camperdown skill set: (1) soft onset on every word initiation, (2) continuous voicing within phrases, (3) deliberate phrasing at 130–150 spm (slightly slower than average conversational 180 spm), (4) clean silent pauses at phrase boundaries. After each topic: record yourself, replay it, and rate speech naturalness 1–10 (1 = highly unnatural, 10 = completely natural). Target is 8+. If naturalness is below 6: reduce your pace further for the next topic. If you stutter: do NOT stop. Complete the utterance, then apply a full Cancellation (Van Riper, 1973): pause, re-say the stuttered word with soft onset, continue.",
+      "technique_cue": "Soft onset + continuous phonation + 130–150 spm + Cancellation on any stutter. Naturalness is the goal — robotic speech is not success.",
+      "practice_material": [
+        "Describe your daily morning routine from waking up to leaving home. Include every small step.",
+        "Explain how you would teach someone who has never cooked before to make a simple meal. Give detailed steps.",
+        "Talk about a time you had to make a difficult decision. What factors did you consider and what did you choose?",
+        "Describe your ideal home in as much detail as possible — location, rooms, surroundings, atmosphere.",
+        "Explain the plot of a book, film, or television series you recently enjoyed from beginning to end.",
+        "Talk about a skill you have been working on for a long time. Describe the learning process in detail.",
+        "Describe a place you have visited that left a strong impression on you. What made it memorable?",
+        "Imagine you are being interviewed for a job you really want. Introduce yourself and explain why you are the right candidate."
+      ],
+      "progression_rule": "Achieve naturalness rating of 8+ and fewer than 2 stutters per minute on 5 of 8 topics across two sessions before considering transfer to real-world speaking situations.",
+      "self_monitoring": "Log after each topic: (1) naturalness rating 1–10, (2) number of stutters, (3) any moments where technique broke down. Track across sessions.",
+      "self_check": "Was your speech natural enough that a stranger would not notice you were using a technique? Were Cancellations applied consistently and without panic?"
+    }
   },
+
   "WordRep": {
-    "beginner": [
-      {
-        "name": "Single Word Fluency Drill",
-        "instruction": "Say each word once, slowly and clearly. Focus on saying the word in one smooth motion without repeating any part of it. If you repeat a word, pause, take a breath, and try again.",
-        "practice_material": [
-          "banana",
-          "elephant",
-          "computer",
-          "umbrella",
-          "butterfly",
-          "telephone",
-          "refrigerator",
-          "wonderful",
-          "adventure",
-          "chocolate"
-        ],
-        "duration": "5 minutes"
-      }
-    ],
-    "intermediate": [
-      {
-        "name": "Phrase-Level Repetition Control",
-        "instruction": "Read each phrase in one smooth breath. Concentrate on moving forward through each word without going back and repeating any word. Visualize the whole phrase before speaking.",
-        "practice_material": [
-          "A beautiful morning sunrise.",
-          "The quick brown fox jumps high.",
-          "She walked along the sandy beach.",
-          "They enjoyed a delicious homemade dinner.",
-          "The children played happily in the garden.",
-          "He carefully placed the books on the shelf."
-        ],
-        "duration": "10 minutes"
-      }
-    ],
-    "advanced": [
-      {
-        "name": "Conversational Flow Practice",
-        "instruction": "Read the following dialogue aloud, playing both roles. Focus on forward-moving speech with no word repetitions. Maintain a conversational tone and natural pauses between exchanges.",
-        "practice_material": [
-          "Person A: Good morning! Did you finish the report for today's meeting?",
-          "Person B: Yes, I completed it last night. I also added the charts you requested.",
-          "Person A: That's excellent. The manager will be really pleased with our progress.",
-          "Person B: I hope so. I spent a lot of time making sure the data was accurate.",
-          "Person A: Your attention to detail always makes a big difference. Let's review it together.",
-          "Person B: Sounds great. I'll bring my laptop to the conference room in ten minutes."
-        ],
-        "duration": "15 minutes"
-      }
-    ]
+    "clinical_approach": "GILCU Fluency Shaping + Runyan's 10 Fluency Rules ('Say each word once')",
+    "target_behavior": "Eliminate whole-word and phrase-level repetitions by using forward-only speech momentum, GILCU utterance length hierarchy, and chunking breath groups",
+    "beginner": {
+      "name": "GILCU Single-Word and 2-Word Fluency (Steps 1–3)",
+      "clinical_method": "GILCU Establishment Phase, Steps 1–3 (Ryan, 1974) + Runyan's Rule: 'Say the word once'",
+      "duration": "7 minutes",
+      "target_fluency_rate": "Zero word repetitions across all items",
+      "goal": "Train the neural speech-planning system to treat each word as a single, closed event. Based on GILCU Step 1: read 1 word fluently. Step 2: read 2 words fluently. Operant conditioning: each successful non-repeated production is a reinforced fluency unit.",
+      "instruction": "Before each item, visualize the word written on a whiteboard in your mind. Hold the image for 1 second. Then say the word once — cleanly, at normal volume, without hesitation before or repetition after. If you repeat: stop immediately, pause 3 full seconds (do not fill the silence), then re-say the word once. The 3-second pause is critical — it interrupts the repetition reflex loop. Do not move to the next word until the current word has been said once and only once. Use a slight, gentle onset.",
+      "technique_cue": "Visualize → 1-second mental rehearsal → say once → move forward. Never go back.",
+      "practice_material": [
+        "banana",
+        "elephant",
+        "computer",
+        "umbrella",
+        "butterfly",
+        "telephone",
+        "refrigerator",
+        "wonderful",
+        "adventure",
+        "chocolate",
+        "banana elephant",
+        "computer umbrella",
+        "butterfly telephone",
+        "wonderful adventure",
+        "chocolate refrigerator"
+      ],
+      "progression_rule": "Zero repetitions on all 15 items in two consecutive sessions before advancing.",
+      "self_monitoring": "Mark a tally on paper for every repetition. The goal is zero tallies per session.",
+      "self_check": "Did each word feel like a door closing behind you? No urge to go back and re-open it?"
+    },
+    "intermediate": {
+      "name": "GILCU Phrase and Sentence Fluency — Chunk Breathing (Steps 4–10)",
+      "clinical_method": "GILCU Steps 4–10 + Phrasing / Chunking (ASHA, 2024 Fluency Shaping Guidelines)",
+      "duration": "16 minutes",
+      "target_fluency_rate": "Zero word repetitions; fewer than 2 revisions per paragraph",
+      "goal": "Extend forward-only momentum across phrases and full sentences. Use the clinical chunking technique: divide speech into 3–4 word breath units, treat each chunk as a single unbreakable flow. This mirrors GILCU steps 4–10 where utterance length increases from phrases to sentences.",
+      "instruction": "Before reading each item: scan the full sentence silently and mark natural chunk boundaries (you can do this mentally). Example: [A beautiful morning] [was beginning] [outside the window]. Inhale before each chunk. Within a chunk, do NOT stop or repeat — if a repetition starts, carry the chunk to its end, then restart the entire chunk from scratch (not from the repeated word). Eyes should track 2–3 words ahead of your voice. Rate: approximately 110–120 syllables per minute. On second trial of each sentence: increase to natural pace while retaining zero-repetition rule.",
+      "technique_cue": "Chunk → breathe → flow → close. If repetition occurs mid-chunk: finish chunk, restart chunk. Never restart from the repeated word.",
+      "practice_material": [
+        "A beautiful morning sunrise filled the entire sky with warm, golden color.",
+        "The quick brown fox jumped gracefully over the sleeping lazy dog in the garden.",
+        "She walked slowly along the sandy beach, collecting smooth, colorful shells as she went.",
+        "They enjoyed a wonderfully long homemade dinner with the whole family on Saturday evening.",
+        "The children played happily in the garden all afternoon without arguing once.",
+        "He carefully placed the heavy stack of old books on the wooden shelf by the door.",
+        "We drove through the winding mountain roads and admired the breathtaking views along the way.",
+        "The doctor recommended drinking plenty of water, eating fresh vegetables, and getting adequate rest.",
+        "My manager appreciated the detailed report I submitted well before the final deadline last Friday.",
+        "The old railway station had been converted into a beautiful community art gallery.",
+        "She rehearsed her presentation three times before walking confidently into the conference room.",
+        "Despite the heavy traffic on the highway, he arrived at the airport with plenty of time to spare."
+      ],
+      "progression_rule": "Zero repetitions on 10 of 12 sentences in two consecutive sessions. If repetitions occur on the same sentence repeatedly, identify the trigger word and drill that word alone (GILCU branching step).",
+      "self_monitoring": "For each sentence, note: How many chunks? Any repetition? Which word triggered it? This identification step mirrors Van Riper's Identification Phase.",
+      "self_check": "Did the chunk boundaries feel natural? Was forward momentum maintained even when a word felt difficult? Did your eyes track ahead of your voice?"
+    },
+    "advanced": {
+      "name": "Conversational Fluency Under Communicative Pressure — Dialogue + Role Transfer",
+      "clinical_method": "GILCU Transfer Phase (Steps 11–18: conversation 1 min → 5 min) + Van Riper Stabilization + ARTS fear-hierarchy exposure",
+      "duration": "22 minutes",
+      "target_fluency_rate": "Fewer than 2 word repetitions per minute of connected speech",
+      "goal": "Achieve zero-repetition conversational fluency under mild communicative pressure simulating real-life exchange. GILCU Transfer Phase requires fluency to generalize across contexts — this exercise uses dialogue to replicate conversational demands. Addresses the ARTS principle that communicative pressure activates the same neural patterns as high-fear situations.",
+      "instruction": "Read the dialogue aloud playing BOTH roles with a natural conversational tone — different volume or posture for each speaker helps activate realistic social conditions. Rule: zero word repetitions per speaking turn. If a repetition occurs: apply a Cancellation (Van Riper, 1973) — finish the sentence, pause 2 seconds, re-say the repeated word cleanly, continue. After completing the full dialogue: cover Person B's lines and respond spontaneously (improvise the answers). This transfer to spontaneous speech is the core of GILCU conversation steps 15–18. Finally: call a real person or use voice memo and retell the dialogue content in your own words — this is the real-world transfer step.",
+      "technique_cue": "Complete each turn before any correction. Cancellation only — no mid-sentence restarts. Spontaneous improvisation on second pass.",
+      "practice_material": [
+        "A: Good morning. Did you manage to finish the full report for this morning's team meeting?",
+        "B: Yes, I completed everything last night. I also added the updated charts and the revised cost projections you asked for.",
+        "A: That is excellent news. The regional manager will be very pleased to see how much progress we have made this month.",
+        "B: I hope so. I spent a considerable amount of time making sure every data point was accurate and clearly presented.",
+        "A: Your careful attention to detail always makes a meaningful difference to the quality of our presentations. Shall we do a quick review together before we go in?",
+        "B: Absolutely. Give me five minutes to grab my laptop and I will meet you in the main conference room.",
+        "A: Perfect. I will set up the projector and make sure everyone has a copy of the agenda by the time you arrive.",
+        "B: Thank you. I think today is going to go really well for the whole team.",
+        "A: I agree completely. We have put in a lot of work this quarter and it is time to let the results speak for themselves.",
+        "B: Well said. Let us go in and show them what we have accomplished together."
+      ],
+      "progression_rule": "Fewer than 3 total word repetitions across the full dialogue in two sessions. Then successfully complete the spontaneous improvisation version. Then complete the real-world voice memo transfer.",
+      "self_monitoring": "Track: (1) total repetitions in scripted read, (2) total repetitions in spontaneous improvisation, (3) naturalness during improvisation 1–10. Compare across sessions.",
+      "self_check": "Were Cancellations applied calmly rather than anxiously? Did the spontaneous improvisation produce more or fewer repetitions than the scripted read? What does that tell you?"
+    }
   },
+
   "SoundRep": {
-    "beginner": [
-      {
-        "name": "Initial Sound Smoothing",
-        "instruction": "Say each word slowly. Pay special attention to the first sound of each word — say it gently and only once. Avoid repeating the starting sound. Use a soft voice onset.",
-        "practice_material": [
-          "ball",
-          "table",
-          "paper",
-          "water",
-          "morning",
-          "garden",
-          "kitchen",
-          "sunset",
-          "pillow",
-          "rabbit"
-        ],
-        "duration": "5 minutes"
-      }
-    ],
-    "intermediate": [
-      {
-        "name": "Stretched Sound Sentences",
-        "instruction": "Read each sentence by gently stretching the first sound of the first word in the sentence. This helps prevent sound repetitions. Keep the stretch smooth and then glide into the rest of the sentence naturally.",
-        "practice_material": [
-          "Saturday is my favorite day of the week.",
-          "Peter picked a basket of fresh apples.",
-          "The baby smiled when she saw the puppy.",
-          "Can you come to the party tomorrow evening?",
-          "Running in the rain can be really refreshing.",
-          "My mother makes the most amazing pancakes."
-        ],
-        "duration": "10 minutes"
-      }
-    ],
-    "advanced": [
-      {
-        "name": "Sound Repetition Challenge Passage",
-        "instruction": "Read the passage below which contains many words with similar starting sounds. The goal is to say each initial sound only once without repeating it. Use gentle onset and light articulatory contact for difficult sounds.",
-        "practice_material": [
-          "Peter and Patty planned a perfect picnic in the park. They packed peanut butter sandwiches, potato chips, and plenty of pink lemonade. The path to their favorite spot passed through a patch of pretty purple flowers. Peter pointed at a pair of parrots perched in the pine tree. Patty pulled out her camera to capture the peaceful moment. It was a positively pleasant afternoon that they would always remember."
-        ],
-        "duration": "15 minutes"
-      }
-    ]
+    "clinical_approach": "Fluency Shaping — Easy Onset + Prolonged Initial Phoneme (Fluency Shaping Technique, ASHA 2024) + GILCU Part-Word Repetition Hierarchy",
+    "target_behavior": "Eliminate part-word and sound/syllable repetitions by using gentle phoneme initiation, progressive onset stretch reduction, and controlled phonological loading",
+    "beginner": {
+      "name": "Soft Phoneme Initiation — Isolated Words",
+      "clinical_method": "Easy Onset Technique (Guitar, 2013; ASHA Fluency Shaping) + GILCU Step 1 equivalent for part-word repetitions",
+      "duration": "7 minutes",
+      "target_fluency_rate": "Zero part-word repetitions across all items",
+      "goal": "Establish clean single-occurrence of the initial phoneme at word level. The easy onset technique directly targets the hypervalving at the larynx and articulators that produces sound repetitions. Clinicians use this as the foundational step before progressing to sentence level.",
+      "instruction": "For each word: place your hand gently on your sternum (chest). Take a slow breath in. As you exhale, let phonation begin like a whisper that grows gradually into full voice — never a hard strike. The first sound of each word should last approximately 150–200 milliseconds before the rest of the word follows smoothly. Say each word: first as a whispered onset (whisper the first sound, then voice the rest), then full voice with the same gentle start. If a sound repetition occurs: stop, wait 3 full seconds in silence, exhale gently, then re-enter the word from the beginning with a softer onset.",
+      "technique_cue": "Whisper onset first → full-voice second → feel the chest vibration start gently. Larynx stays loose.",
+      "practice_material": [
+        "ball", "ball — bat — basket",
+        "table", "table — talk — taken",
+        "paper", "paper — paint — pencil",
+        "water", "water — window — wonder",
+        "morning", "morning — money — moment",
+        "garden", "garden — gather — going",
+        "kitchen", "kitchen — camera — careful",
+        "sunset", "sunset — simple — seven",
+        "pillow", "pillow — pretty — perfect",
+        "rabbit", "rabbit — really — river"
+      ],
+      "progression_rule": "Zero sound repetitions on all items for two consecutive sessions. Clinicians rate easy onset quality before advancing.",
+      "self_monitoring": "After each word triplet: did the initial phoneme feel like it slid into the word? Or did it bump and restart? Note the specific sounds that feel hardest.",
+      "self_check": "Were any specific phonemes (b, p, t, d, k, g, s) consistently harder than others? These are your personal high-risk phonemes — record them for targeted practice."
+    },
+    "intermediate": {
+      "name": "Prolonged Onset — Sentence Level with Progressive Stretch Reduction",
+      "clinical_method": "Prolonged Speech with Progressive Stretch Reduction (Camperdown Program, O'Brian et al., 2003) — 3-trial reduction hierarchy",
+      "duration": "16 minutes",
+      "target_fluency_rate": "Zero part-word repetitions by Trial 3 of each sentence",
+      "goal": "Transfer easy onset from word level to sentence-initial position using systematic stretch reduction across three trials. This mirrors the Camperdown Program's approach: exaggerated technique in Trial 1 → near-normal in Trial 3. Provides proprioceptive learning without permanent unnatural speech.",
+      "instruction": "Each sentence receives THREE trials. Trial 1: Extend the first sound of the first word by 500ms — a clearly noticeable stretch (e.g., 'Ssssaturday is my...'). This gives your speech motor system a smooth running start and disrupts the repetition loop. Trial 2: Reduce stretch to 200ms — still slight but barely audible. Trial 3: Zero stretch — aim for the same smooth onset as Trial 2 but at completely natural rate. If a sound repetition occurs on Trial 3: do NOT go back to Trial 1. Instead apply a Pullout (Van Riper, 1973): hold the repeated sound, stretch it once smoothly, and glide forward into the full word.",
+      "technique_cue": "Trial 1 = obvious stretch. Trial 2 = subtle stretch. Trial 3 = natural rate with retained smoothness. Pullout on any Trial 3 repetition.",
+      "practice_material": [
+        "Saturday is my favorite and most relaxing day of the entire week.",
+        "Peter carefully picked a large basket of fresh ripe apples from the garden.",
+        "The tiny baby smiled broadly when she first saw the playful puppy in the yard.",
+        "Can you please come to the birthday party at our house tomorrow evening after dinner?",
+        "Running slowly through the rain on a warm evening can feel surprisingly refreshing and freeing.",
+        "My mother always makes the most amazing homemade pancakes for the whole family on Sunday mornings.",
+        "Several scientists have recently discovered a fascinating new species of deep-sea fish near the ocean floor.",
+        "Summer afternoons spent sitting by the river with a good book are my absolute favorite pastime.",
+        "The children spent the entire afternoon carefully building the most elaborate sandcastle on the beach.",
+        "Please remember to bring your passport, boarding pass, and all necessary documents to the airport check-in desk.",
+        "Both brothers decided to start an early morning running routine together to improve their overall health and fitness.",
+        "The beautiful photographs taken during the mountain hiking trip will always remind me of that perfect golden afternoon."
+      ],
+      "progression_rule": "Zero sound repetitions on Trial 3 for 10 of 12 sentences across two consecutive sessions.",
+      "self_monitoring": "Log per sentence: Did Trial 3 maintain the smoothness achieved in Trial 1? Did stretch reduction happen across all 3 trials or did you stay at Trial 1 level? Staying at Trial 1 is not progress — reduction is the skill.",
+      "self_check": "By Trial 3, was the stretch completely invisible to a listener? Did the Pullout feel like a smooth glide or a forced correction?"
+    },
+    "advanced": {
+      "name": "High Phonological Load — Alliterative Passage + Voluntary Stuttering Desensitization",
+      "clinical_method": "Light Articulatory Contact (Fluency Shaping, Guitar 2013) + Voluntary Stuttering (Van Riper Desensitization Phase, 1973) + ARTS fear-hierarchy for high-risk phonemes",
+      "duration": "25 minutes",
+      "target_fluency_rate": "Fewer than 2 sound repetitions per minute across all passages",
+      "goal": "Achieve fluency under maximum phonological load using light articulatory contact for high-risk sounds, combined with voluntary stuttering to desensitize fear of specific phonemes. Van Riper's desensitization phase established that intentional pseudo-stuttering reduces the negative emotional charge of feared sounds, making involuntary repetitions less likely. This is an advanced combined technique used by SLPs for clients who have plateaued at intermediate level.",
+      "instruction": "Each passage has three rounds. Round 1 (Light Contact): Read slowly — for every plosive (b, d, g, k, p, t) and fricative (s, f, sh, z), make the absolute minimum articulatory contact. Lips should touch like two feathers. Tongue-to-palate like a raindrop. Sustained forward airflow throughout. Round 2 (Voluntary Stuttering): Read the same passage and deliberately produce a slight, easy repetition (one repeat only) on 3–4 words of your choosing. This is intentional, controlled, and easy — the opposite of the anxious involuntary kind. The goal is to demonstrate to your brain that a repetition is not an emergency. Round 3 (Natural): Read at full natural pace using only retained easy onset and light contact — no forced technique. Note which phonemes triggered involuntary repetitions in Round 3 (these are your current high-risk sounds).",
+      "technique_cue": "Round 1 = lightest possible contact. Round 2 = deliberate controlled easy repetitions (desensitization). Round 3 = natural rate, no forcing.",
+      "practice_material": [
+        "Peter and Patty planned a perfect picnic in the park near the public pavilion on a pleasant Saturday afternoon. They packed peanut butter sandwiches, potato chips, pickled peppers, and plenty of cold pink lemonade into a large polka-dot bag.",
+        "The path to their preferred picnic spot passed peacefully through a pretty patch of purple, pink, and pale peach wildflowers that perfumed the surrounding air with a powerful, pleasant fragrance.",
+        "Peter pointed proudly at a pair of parrots perched perfectly still in the upper branches of a tall pine tree, preening their brilliant plumage in the warm afternoon sunlight pouring down through the canopy.",
+        "Patty pulled out her portable camera and pressed the shutter button precisely as the parrots spread their wings and prepared to take flight from the pine tree above them.",
+        "It was a positively perfect afternoon full of peaceful conversation, warm sunshine, and plenty of laughter — the kind of day that people remember long after the summer has passed.",
+        "Bobby bravely borrowed his big brother's bright blue bicycle and rode carefully but boldly down the bumpy cobblestone road toward the bridge by the botanical garden before breakfast on a beautiful bright morning.",
+        "Dozens of dedicated doctors and diligent data scientists developed a detailed diagnostic database designed to detect dangerous diseases during their early developmental stages before symptoms became difficult to distinguish or describe clearly.",
+        "Careful calculation confirmed that the complicated construction contract contained several critically costly calculation discrepancies that could cause considerable delays and create difficult complications for the development company during the coming calendar quarter."
+      ],
+      "progression_rule": "Fewer than 2 involuntary sound repetitions per minute across all passages in Round 3, maintained for two consecutive sessions. Voluntary stuttering in Round 2 should feel completely comfortable — any anxiety during voluntary stuttering indicates incomplete desensitization.",
+      "self_monitoring": "Record: (1) involuntary repetitions per passage in Round 3, (2) comfort level with voluntary stuttering in Round 2 (1–10 scale), (3) which specific phonemes produced involuntary repetitions. Track phoneme data across sessions.",
+      "self_check": "Did voluntary stuttering in Round 2 feel controlled and calm? If not — what emotion came up? Did Round 3 produce fewer involuntary repetitions than Round 1? Which phoneme remains your hardest?"
+    }
   },
+
   "Prolongation": {
-    "beginner": [
-      {
-        "name": "Quick Release Word Practice",
-        "instruction": "Say each word with a short, clean start. If you feel yourself holding onto a sound too long, stop, take a gentle breath, and try the word again with a light and quick beginning.",
-        "practice_material": [
-          "see",
-          "fast",
-          "moon",
-          "happy",
-          "fish",
-          "summer",
-          "light",
-          "name",
-          "house",
-          "flower"
-        ],
-        "duration": "5 minutes"
-      }
-    ],
-    "intermediate": [
-      {
-        "name": "Controlled Duration Sentences",
-        "instruction": "Read each sentence at a steady pace. Focus on giving each sound its natural length — not too short, not too long. If you catch yourself stretching a sound, gently release it and move to the next sound.",
-        "practice_material": [
-          "Susan saw seven stars shining in the sky.",
-          "Five friendly frogs found food by the fountain.",
-          "Many musicians make marvelous music on Mondays.",
-          "The family flew to Florida for a fun vacation.",
-          "Lee loves learning languages and listening to lectures.",
-          "She sells seashells beside the sandy seashore."
-        ],
-        "duration": "10 minutes"
-      }
-    ],
-    "advanced": [
-      {
-        "name": "Prolongation Resistance Reading",
-        "instruction": "Read the challenging paragraph below. It contains many continuant sounds (s, f, m, l, n, z) that are commonly prolonged. Focus on using light articulatory contact and releasing each sound promptly. Practice natural speech rhythm throughout.",
-        "practice_material": [
-          "Samantha finally finished her fascinating science project on Friday afternoon. She felt so satisfied and relieved. Her friends Mia and Liam came over to see the final result. They marveled at the colorful solar system model she had carefully assembled. Samantha smiled and said she was most proud of the fine details on Saturn's rings. Later that evening, the family celebrated with a lovely homemade lasagna dinner and lots of laughter."
-        ],
-        "duration": "15 minutes"
-      }
-    ]
+    "clinical_approach": "Fluency Shaping — Reduced Rate, Continuous Phonation + Syllable-Timed Speech (ASHA); Cancellation for prolongation moments",
+    "target_behavior": "Regulate sound duration to natural boundaries by using syllable tapping, proprioceptive monitoring, and controlled release of continuant sounds",
+    "beginner": {
+      "name": "Syllable Tapping — Word Level Proprioceptive Training",
+      "clinical_method": "Syllable-Timed Speech + Pacing Board equivalent (Fluency Shaping, ASHA 2024) + Proprioceptive monitoring",
+      "duration": "8 minutes",
+      "target_fluency_rate": "Zero prolongations; each word completed within its natural syllable count",
+      "goal": "Teach the speech motor system where each sound naturally ends by using a physical tap as an external pacemaker. This replaces the prolonged hold reflex with a rhythmic forward cue. Clinicians use pacing boards in clinical settings — finger tapping replicates this at home.",
+      "instruction": "For each word: tap your index finger gently on your thigh once per syllable as you speak. The tap marks the START of each new syllable — think of the tap as a release trigger that pushes your articulation forward. Say each word: Trial 1 with tapping, Trial 2 without tapping but retaining the same internal rhythm. If a prolongation occurs: stop at the prolonged sound, exhale gently, re-enter the word with a tap on the first syllable. After completing the word list: go back and say each word without tapping — the internal timing should now feel more natural.",
+      "technique_cue": "Tap = release. Each tap tells the sound 'you are done now — move forward.' Never linger past the tap.",
+      "practice_material": [
+        "see (1 tap)", "see-ing (2 taps)", "sum-mer (2 taps)",
+        "fast (1 tap)", "fast-er (2 taps)", "fast-est (2 taps)",
+        "moon (1 tap)", "moon-light (2 taps)", "moon-light-ing (3 taps)",
+        "hap-py (2 taps)", "hap-pi-ness (3 taps)", "hap-pi-ly (3 taps)",
+        "fish (1 tap)", "fish-ing (2 taps)", "fish-er-man (3 taps)",
+        "light (1 tap)", "light-er (2 taps)", "light-house (2 taps)",
+        "flow-er (2 taps)", "flow-er-ing (3 taps)", "wild-flow-er (3 taps)",
+        "name (1 tap)", "name-sake (2 taps)", "un-named (2 taps)"
+      ],
+      "progression_rule": "Zero prolongations on all words without tapping (Trial 2) for two consecutive sessions.",
+      "self_monitoring": "Compare Trial 1 (tapped) and Trial 2 (untapped). Is the rhythm retained without the physical cue? If not, more tapping practice is needed before the rhythm internalizes.",
+      "self_check": "Can you feel the internal 'tap' even when your finger is still? That felt sense of syllable boundaries is what you are training."
+    },
+    "intermediate": {
+      "name": "Continuant Sound Sentences — Controlled Duration with Tapping Transfer",
+      "clinical_method": "Syllable-Timed Speech → Natural Speech Transfer (Fluency Shaping, ASHA 2024) + Rate Control at 110–120 spm",
+      "duration": "17 minutes",
+      "target_fluency_rate": "Zero prolongations; speech rate 110–130 syllables per minute",
+      "goal": "Transfer syllable-tap timing to sentences loaded with continuant sounds (s, f, m, l, n, z, sh) — the sounds most commonly prolonged. Use three progressive trials to internalize timing without tapping. This intermediate stage directly mirrors clinical practice of transferring rate control from pacing board to natural speech.",
+      "instruction": "Each sentence receives THREE trials. Trial 1: Tap every syllable on your thigh while reading — this is slow and deliberate. Trial 2: Tap only the stressed syllable in each word (content words only — not 'the', 'a', 'and'). Trial 3: No tapping — speak naturally, retaining the timing. At any prolongation on Trial 3: apply a Cancellation (Van Riper, 1973) — finish the word, pause 2 seconds, re-say the prolonged word at correct duration, continue. Do NOT restart the whole sentence. Focus particularly on word-final sounds and across-word transitions — prolongation often bridges the end of one word to the start of the next.",
+      "technique_cue": "Trial 1 = all taps. Trial 2 = stressed taps only. Trial 3 = no taps, natural rate. Cancellation on any prolongation.",
+      "practice_material": [
+        "Susan slowly saw seven shining stars appearing in the darkening sky above the silent mountains.",
+        "Five friendly frogs found fresh food near the flowing fountain in the forest clearing.",
+        "Many motivated musicians make marvelous, meaningful music together on warm Monday evenings in the summer.",
+        "The large family flew smoothly all the way to Florida for a fun-filled, relaxing summer vacation.",
+        "Lee genuinely loves learning foreign languages and carefully listening to long, fascinating academic lectures online.",
+        "She sells smooth, polished seashells along the long sandy seashore near the southern lighthouse.",
+        "Samantha finally, slowly, and successfully finished her fascinating science research project late on a Friday afternoon.",
+        "The smooth, silver salmon swam silently and swiftly through the clear, shallow mountain stream in the sunshine.",
+        "More and more nurses are choosing to specialize in mental health and community-based social medicine nationwide.",
+        "The famous musician played a slow, mellow, and deeply soulful melody on his well-worn classical violin.",
+        "Melissa usually feels most confident and creative in the early morning hours before the rest of the household wakes.",
+        "The fearless volunteer firefighters moved swiftly and calmly through the smoke-filled hallway searching systematically for survivors."
+      ],
+      "progression_rule": "Zero prolongations on Trial 3 for 10 of 12 sentences across two consecutive sessions.",
+      "self_monitoring": "Log per sentence: (1) prolongation occurred on which sound? (2) Was the Cancellation applied correctly? (3) Did Trial 3 sound natural or slightly robotic? Naturalness below 7/10 means pace reduction is needed.",
+      "self_check": "Were word-transition moments (end of one word → start of next) smooth and correctly timed? These transitions are the most common site of bridging prolongation — did you catch any?"
+    },
+    "advanced": {
+      "name": "Prolongation Resistance — Maximum Continuant Load Passage + Voluntary Prolongation Desensitization",
+      "clinical_method": "Van Riper Desensitization + Light Articulatory Contact (Guitar, 2013) + Camperdown Natural Speech Training",
+      "duration": "28 minutes",
+      "target_fluency_rate": "Fewer than 2 prolongations per minute; naturalness rating 8–10",
+      "goal": "Achieve natural-sounding speech through maximum-load continuant passages using light articulatory contact and forward airflow. Uses voluntary prolongation as a desensitization tool (Van Riper, 1973) — intentionally producing controlled, easy prolongations reduces the fear charge of continuant sounds, decreasing involuntary prolongation frequency. Highest difficulty level mirrors SLP clinic advanced sessions for adults who have completed basic and intermediate programs.",
+      "instruction": "Three rounds per passage. Round 1 (Voluntary Prolongation — Desensitization): Read and deliberately elongate ONE continuant sound per sentence to approximately 400ms — a clearly audible stretch. Choose a different sound each sentence. This should feel completely controlled and calm — you are the one in charge of the prolongation. If it creates anxiety: that anxiety is the target. Stay with it. Round 2 (Light Contact): Read without voluntary prolongation — focus on forward airflow that never stops between words. Every continuant sound is completed and immediately handed off. Think of speech as a moving conveyor belt — nothing pools. Round 3 (Record and Rate): Read at fully natural pace, record yourself. Replay and count involuntary prolongations. Rate naturalness 1–10. Target: fewer than 2 involuntary prolongations per minute, naturalness 8+.",
+      "technique_cue": "Round 1 = controlled voluntary prolongation (desensitization). Round 2 = forward conveyor-belt airflow. Round 3 = record, count, rate.",
+      "practice_material": [
+        "Samantha finally finished her fascinating and enormously detailed science project very late on a foggy Friday evening after many long, sleepless nights of careful research and meticulous, systematic data analysis.",
+        "She felt so deeply satisfied, sincerely relieved, and genuinely fulfilled that she almost immediately called her mother to share the wonderful, long-awaited news about her successful project submission.",
+        "Her closest friends, Mia and Liam, drove across the city to come and see the final, polished result of all her months of sustained hard work and creative scientific thinking.",
+        "They marveled sincerely and enthusiastically at the colorful, intricate, and beautifully detailed solar system model she had painstakingly and lovingly assembled over many exhausting but rewarding late-night sessions.",
+        "Samantha smiled warmly and said she was most proud of the extraordinarily fine and precise details she had managed to create on Saturn's famously complex and visually stunning ring system.",
+        "Later that same evening, the whole family gathered warmly in the living room and celebrated with a large, delicious, lovingly prepared homemade lasagna and a wonderful evening of cheerful laughter and warm, meaningful conversation.",
+        "Melissa, a senior nurse with fifteen years of experience in the field, specialized in developing innovative, evidence-based solutions for managing stress, anxiety, and emotional exhaustion among frontline healthcare staff in large hospital systems.",
+        "The senior scientist's seminal research on sustainable farming methods in semi-arid zones has significantly influenced modern agricultural policy in several developing nations across sub-Saharan Africa and Southeast Asia since its original publication."
+      ],
+      "progression_rule": "Fewer than 2 involuntary prolongations per minute in Round 3, naturalness 8+, across three consecutive sessions. Voluntary prolongation in Round 1 should feel completely neutral — no anxiety. If anxiety persists, return to Van Riper's Desensitization Phase with an SLP.",
+      "self_monitoring": "Record after each session: (1) voluntary prolongation comfort level 1–10, (2) involuntary prolongation count in Round 3, (3) naturalness rating, (4) specific sounds that still pool involuntarily. Track all four metrics across sessions to observe clinical progress.",
+      "self_check": "Is voluntary prolongation completely anxiety-free? If not, you have identified the emotional component of your prolongations — this requires desensitization work, not more motor practice. Has your naturalness rating improved across sessions?"
+    }
   },
+
   "Interjection": {
-    "beginner": [
-      {
-        "name": "Clean Start Word Practice",
-        "instruction": "Say each word directly without adding any extra sounds before it. Avoid filler sounds like 'um', 'uh', 'er', or 'like' before the word. Pause silently if you need a moment, then say the word cleanly.",
-        "practice_material": [
-          "apple",
-          "window",
-          "blanket",
-          "camera",
-          "dolphin",
-          "guitar",
-          "mountain",
-          "notebook",
-          "rainbow",
-          "volcano"
-        ],
-        "duration": "5 minutes"
-      }
-    ],
-    "intermediate": [
-      {
-        "name": "Filler-Free Sentence Practice",
-        "instruction": "Read each sentence aloud without inserting any filler words or sounds (um, uh, er, like, you know). If you need a moment to think, use a silent pause instead. Record yourself and listen back to check for unintentional fillers.",
-        "practice_material": [
-          "I would like to order a large coffee with milk, please.",
-          "The meeting has been rescheduled to three o'clock on Wednesday.",
-          "Could you please explain how this machine works?",
-          "I believe the answer to the question is forty-two.",
-          "We should finish the project before the deadline next Friday.",
-          "The weather forecast says it will rain tomorrow morning."
-        ],
-        "duration": "10 minutes"
-      }
-    ],
-    "advanced": [
-      {
-        "name": "Impromptu Speaking Without Fillers",
-        "instruction": "Choose one of the topics below and speak about it for two to three minutes. Your goal is to eliminate all filler words and interjections. Replace the urge to say 'um' or 'uh' with a deliberate, silent pause. Record yourself and count any fillers afterwards.",
-        "practice_material": [
-          "Describe the process of making your favorite meal, step by step.",
-          "Explain to someone how to use a smartphone for the first time.",
-          "Talk about the advantages and disadvantages of working from home.",
-          "Describe your ideal vacation destination and what you would do there."
-        ],
-        "duration": "15 minutes"
-      }
-    ]
+    "clinical_approach": "Stuttering Modification — Cognitive-Behavioral Fluency Training + Deliberate Pause Tolerance (ASHA 2024) + PREP Framework for spontaneous speech",
+    "target_behavior": "Eliminate filler words (um, uh, er, like, you know, sort of) by replacing filler reflex with deliberate silent pause, using pre-planning strategies and graded spontaneous speech hierarchy",
+    "beginner": {
+      "name": "Silent Pause Training — Filler Interruption at Word Level",
+      "clinical_method": "Deliberate Pause Technique (Fluency Shaping, ASHA 2024) + Cognitive reframing of silence as competence",
+      "duration": "8 minutes",
+      "target_fluency_rate": "Zero filler words or sounds across all items",
+      "goal": "Train tolerance of silence as the replacement for fillers. Clinicians establish that fillers arise because speakers fear the social perception of silence. The deliberate pause technique decouples silence from failure — teaching the client that 1–2 seconds of silence is cognitively invisible to listeners but emotionally enormous to the speaker. This mismatch must be experientially resolved through practice.",
+      "instruction": "For each word: sit upright. Take a natural breath. Allow up to 2 full seconds of complete silence while you look at the word. Do nothing in that silence — no 'um', no throat clear, no inhale sound, no facial strain. Then say the word once, cleanly. The silence is the practice — the word is just the endpoint. If a filler word or sound escapes before the word: stop. Sit with the discomfort of the filler for 3 seconds. Breathe. Then restart the silence + word sequence. Record yourself — listen back for unconscious micro-fillers (brief 'uh' sounds that are easy to miss in real time).",
+      "technique_cue": "Silence is not awkward — silence is controlled. Train the comfort, not just the absence of fillers.",
+      "practice_material": [
+        "apple", "window", "blanket", "camera", "dolphin",
+        "guitar", "mountain", "notebook", "rainbow", "volcano",
+        "architecture", "philosophy", "conversation", "independence",
+        "responsibility", "uncomfortable", "extraordinary", "Mediterranean"
+      ],
+      "progression_rule": "Zero fillers on all 18 items for two consecutive sessions.",
+      "self_monitoring": "Record the session. Count every filler including micro-fillers ('uh', slight throat sounds). Also rate your discomfort with silence 1–10. The discomfort rating should decrease across sessions.",
+      "self_check": "What was your silence discomfort rating? Did it decrease compared to the last session? If you feel zero discomfort, you are ready to advance. If discomfort is still high at 8+, do another session at this level."
+    },
+    "intermediate": {
+      "name": "Filler-Free Reading — Pre-Planning + Clause-Boundary Pause Control",
+      "clinical_method": "Visual Pre-Scanning + Controlled Pause Placement (ASHA 2024 Fluency Guidelines) + Self-monitoring with recording",
+      "duration": "18 minutes",
+      "target_fluency_rate": "Fewer than 2 fillers per minute; all pauses silent",
+      "goal": "Transfer silent pause technique into connected speech using pre-planning (visual scan before speaking) to eliminate the cognitive overload that triggers fillers. Clinically, fillers are most frequent at clause junctions and sentence starts — the moments of highest linguistic planning demand. Pre-scanning removes the planning load before speech begins.",
+      "instruction": "Before each sentence: scan it fully with your eyes for 2–3 seconds. Process the entire meaning. Then set the text down (or look away) and speak from your mental model — not word-for-word, but meaning-for-meaning. At natural pause points (commas, conjunctions, new clauses): pause silently for 1 second, breathe through nose, continue. If you feel a filler about to emerge: close your mouth, breathe through your nose for 1 second, then continue. Do NOT rush through pauses to avoid them — the pause IS the skill. Record each sentence. Replay and count fillers. Goal: reduce your filler count by half each session.",
+      "technique_cue": "Scan → look away → speak from meaning. Pause = silent breath. Mouth closed during all pauses.",
+      "practice_material": [
+        "I would like to order a large coffee with full-fat milk, no sugar, and an almond croissant on the side, please.",
+        "The quarterly performance review meeting has been rescheduled from Tuesday to three o'clock on Wednesday afternoon in the main boardroom.",
+        "Could you please explain, in as much detail as possible, exactly how this new document management system works in practice?",
+        "I genuinely believe the most accurate and well-supported answer to that particular question is somewhere in the range of forty to forty-five.",
+        "The entire team should make every effort to complete all sections of the project well before the official deadline this coming Friday.",
+        "According to the latest available weather forecast, there is a high probability of sustained heavy rain throughout tomorrow morning and most of the afternoon.",
+        "My colleague strongly recommended that I try the new Italian restaurant that recently opened on the corner of the high street near the post office.",
+        "Please ensure that every single document in the file has been signed, dated, and witnessed before the legal deadline at the end of the working day.",
+        "The visiting professor delivered a remarkably clear and intellectually engaging lecture on the cognitive neuroscience of language acquisition in multilingual individuals.",
+        "Despite the significant delays caused by the unexpectedly heavy traffic on the main motorway, she managed to arrive at the international airport with enough time to board her flight.",
+        "The architectural firm submitted three completely different design proposals for the new public library building, each one reflecting a very different interpretation of the original brief.",
+        "After careful consideration of all available options, the board of directors unanimously agreed to approve the revised five-year strategic development plan for the organization."
+      ],
+      "progression_rule": "Fewer than 2 fillers per minute across all 12 sentences in two consecutive sessions.",
+      "self_monitoring": "For each sentence, log: (1) number of fillers, (2) location of filler (sentence start / clause junction / mid-sentence), (3) Was a silent pause used instead of a filler at least once? Tracking location is diagnostically important — it reveals your specific filler triggers.",
+      "self_check": "Were fillers most common at sentence starts, clause junctions, or mid-sentence? Each location suggests a different underlying cause: sentence-start fillers = planning anxiety, mid-sentence fillers = word-retrieval difficulty. What pattern do you see?"
+    },
+    "advanced": {
+      "name": "Filler-Free Spontaneous Speech — PREP Framework + Graded Audience Hierarchy",
+      "clinical_method": "PREP Spontaneous Speech Framework + ARTS Fear Hierarchy (Sisskin, 2018) + Van Riper Stabilization in real-world speaking contexts",
+      "duration": "30 minutes",
+      "target_fluency_rate": "Fewer than 1 filler per minute of spontaneous speech; 2–3 minute responses",
+      "goal": "Eliminate fillers in genuine spontaneous speech under social pressure by using the PREP framework (Point–Reason–Example–Point) as a cognitive scaffold. This removes the linguistic planning overload that triggers fillers. Simultaneously uses the ARTS fear hierarchy: practice first alone (low pressure), then with a trusted person (medium), then with an acquaintance or in a public setting (high). This is the highest-difficulty filler exercise and directly mirrors real-world SLP transfer work.",
+      "instruction": "For each topic: first plan silently for 20 seconds using PREP (identify your Point, one Reason, one specific Example, restate Point). Then speak for 2–3 minutes without stopping. Rules: (1) zero fillers — any filler means you apply a Cancellation: stop, pause 2 seconds, re-say the last word cleanly without filler, continue. (2) Replace every filler urge with a closed-mouth silent pause of 1 second. (3) Record every response. Count fillers per minute. First pass: record alone (low pressure). Second pass: same topic, speaking to a trusted person or video call (medium pressure — increased filler risk). Third pass: use voice message or public context if available (high pressure). Compare filler count across all three pressure levels. The gap between low and high pressure reveals your social anxiety contribution to filler use.",
+      "technique_cue": "20-second PREP plan → speak from structure → silent pause on any filler urge → Cancellation if filler escapes. Compare low / medium / high pressure filler counts.",
+      "practice_material": [
+        "Describe in full detail the process of making your absolute favorite meal from start to finish, including shopping, preparation, cooking, and serving.",
+        "Explain to someone who has never used a smartphone exactly how to make a phone call, send a text message, and download an application.",
+        "Give a thorough and balanced account of the main advantages and significant disadvantages of working entirely from home versus working in an office.",
+        "Describe your ideal home in complete detail — its location, size, rooms, outdoor spaces, atmosphere, and the feeling of living in it day to day.",
+        "Explain what you were doing professionally and personally this time last year, and describe in detail how your life has changed since then.",
+        "Share your considered opinion on whether people today spend too much, too little, or about the right amount of time using social media and personal technology.",
+        "Describe a person who has had a significant positive influence on your life. Explain what they did, why it mattered, and how it has shaped who you are.",
+        "Imagine you are being interviewed for a role you genuinely want. Introduce yourself, describe your most relevant strengths and experiences, and explain why you are the right person for this position."
+      ],
+      "progression_rule": "Fewer than 1 filler per minute in the HIGH PRESSURE condition across three consecutive sessions. If filler count doubles or triples between low and high pressure, this indicates a significant social anxiety component that benefits from CBT support alongside speech practice (ASHA, 2024).",
+      "self_monitoring": "Record three data points per topic: (1) fillers per minute alone, (2) fillers per minute with trusted person, (3) fillers per minute in high-pressure condition. The ratio matters more than the absolute count. A healthy target is: high-pressure fillers no more than 1.5× the low-pressure count.",
+      "self_check": "Did your filler count increase significantly with an audience? If the increase was greater than 50%, social anxiety — not linguistic planning — is your primary filler driver. This is crucial clinical information. Discuss it with your SLP."
+    }
   },
+
   "Block": {
-    "beginner": [
-      {
-        "name": "Gentle Onset Word Practice",
-        "instruction": "Say each word using a very gentle and relaxed voice onset. Start with a soft exhale before the first sound. Do not force or push the sounds out. If you feel a block, stop, breathe out gently, and start the word again softly.",
-        "practice_material": [
-          "go",
-          "key",
-          "top",
-          "big",
-          "door",
-          "kind",
-          "talk",
-          "bright",
-          "green",
-          "plan"
-        ],
-        "duration": "5 minutes"
-      }
-    ],
-    "intermediate": [
-      {
-        "name": "Easy Onset Sentence Practice",
-        "instruction": "Read each sentence with a relaxed jaw and gentle airflow. Begin each sentence with a soft, breathy start. If you feel tension building up or a block approaching, pause, relax your jaw and throat muscles, exhale gently, and restart the sentence slowly.",
-        "practice_material": [
-          "Take your time and breathe before you begin speaking.",
-          "Go to the kitchen and bring me a glass of cold water.",
-          "Please pass the butter and the basket of warm bread.",
-          "Tell me about your day at school today.",
-          "Can you believe how quickly this year has gone by?",
-          "Dad decided to drive downtown despite the heavy traffic."
-        ],
-        "duration": "10 minutes"
-      }
-    ],
-    "advanced": [
-      {
-        "name": "Block Desensitization Passage",
-        "instruction": "Read the following passage which is loaded with plosive sounds (b, d, g, k, p, t) — the sounds that most commonly trigger blocks. Practice using light articulatory contact: let your lips and tongue touch gently rather than pressing hard. Use continuous airflow and easy onset throughout the passage.",
-        "practice_material": [
-          "Captain Greg Beck decided to take a bold trip to the distant peaks of the great mountain range. He packed a big green backpack with thick blankets, canned tuna, dark bread, and a pair of tough boots. The path began at the bottom of a steep cliff and twisted through dense patches of tall grass and broken tree trunks. Despite the difficult terrain, Greg kept a steady pace and took periodic breaks to drink cold water from a deep creek. By dusk, he had reached the top of the tallest peak. The breathtaking view of the golden valley below made every tough step completely worthwhile."
-        ],
-        "duration": "15 minutes"
-      }
-    ]
+    "clinical_approach": "Van Riper Stuttering Modification (1973): Preparatory Set, Pull-out, Cancellation + Fluency Shaping Easy Onset + ARTS Fear-Hierarchy Desensitization",
+    "target_behavior": "Reduce laryngeal and articulatory blocks using gentle onset, continuous airflow, and the full Van Riper modification hierarchy (Cancellation → Pull-out → Preparatory Set)",
+    "beginner": {
+      "name": "Gentle Onset — Cancellation Introduction (GILCU Step 1 + Van Riper Phase 3)",
+      "clinical_method": "Easy Onset / Gentle Onset (Guitar, 2013; ASHA Fluency Shaping) + Cancellation introduction (Van Riper, 1973)",
+      "duration": "9 minutes",
+      "target_fluency_rate": "Blocks managed with Cancellation; fewer than 3 unmanaged blocks per session",
+      "goal": "Establish gentle voice onset as the primary block-prevention tool. Introduce Cancellation as the correct response when a block occurs. At this level, the goal is NOT to be block-free — it is to respond to every block with a correct Cancellation rather than forcing through. Clinical note: Van Riper emphasized that blocks cannot be eliminated at the beginner stage; they must first be experienced without panic and managed correctly.",
+      "instruction": "For each word: open your mouth slightly before initiating phonation. Take a relaxed breath. Let a tiny puff of air precede the first sound — like fogging a mirror with your mouth. Vocal cords should come together softly, never slam. If a block occurs: do NOT push. Do NOT hold your breath. Instead: go completely limp in jaw, tongue, and throat. Exhale gently. Wait for the block to release on its own. Then apply a Cancellation: say the blocked word again with easy onset. If the block occurs again: repeat the Cancellation. Your success measure is NOT fluency — it is correct use of Cancellation on every block.",
+      "technique_cue": "Open mouth → tiny air puff → soft phonation. Block occurs → go limp → exhale → wait → Cancellation. No forcing ever.",
+      "practice_material": [
+        "go", "going", "gone away",
+        "key", "keyboard", "keep it safe",
+        "top", "topmost", "take the top one",
+        "big", "bigger", "bring it back",
+        "door", "doorbell", "drive to the door",
+        "kind", "kindly", "keep being kind",
+        "talk", "talking", "take time to talk",
+        "bright", "brightly", "bring bright light",
+        "green", "greener", "grow great green plants",
+        "plan", "planning", "please plan ahead carefully"
+      ],
+      "progression_rule": "Correct Cancellation applied on 80% or more of all blocks across two consecutive sessions. Zero instances of forcing through a block.",
+      "self_monitoring": "After each group: (1) Did a block occur? (2) Was Cancellation applied correctly (limp → exhale → wait → re-say)? (3) Or was there forcing? Only correct responses count toward progression.",
+      "self_check": "Was Cancellation calm or anxious? Any forcing indicates the block still triggers panic — this is the emotional component that desensitization must address before Pull-out can be introduced."
+    },
+    "intermediate": {
+      "name": "Pull-out Technique — Managing Blocks Mid-Word in Sentences",
+      "clinical_method": "Pull-out Technique (Van Riper, 1973) — the second and most clinically skilled of the three modification techniques",
+      "duration": "18 minutes",
+      "target_fluency_rate": "Pull-out applied successfully on 70% or more of blocks; fewer than 2 unmanaged blocks per session",
+      "goal": "Master the Pull-out technique: when a block begins, do not stop — instead, hold the blocked sound, consciously relax jaw and throat, stretch the stuck sound smoothly, and glide forward into the rest of the word. This requires a higher level of in-moment awareness than Cancellation and is considered by Van Riper to be the most therapeutically valuable of the three techniques. Clinicians typically spend 3–6 weeks on Pull-out at intermediate level.",
+      "instruction": "Read each sentence at normal pace with gentle onset throughout. When a block begins: do NOT stop. Instead, apply the Pull-out sequence: (1) Keep the blocked sound lightly active — do not release all pressure suddenly, (2) Consciously relax your jaw, tongue, and throat while maintaining the sound, (3) Stretch the stuck sound for 200–400ms, (4) Smoothly glide into the rest of the word. Then continue the sentence normally. After the sentence: note the word where the block occurred, the specific sound, and whether the Pull-out felt smooth or forced. A smooth Pull-out produces a slightly prolonged word but completely natural forward momentum afterward. A forced Pull-out creates a hard release — this is the wrong pattern.",
+      "technique_cue": "Block starts → do NOT stop → hold lightly → relax → stretch → glide forward. Never stop mid-word. Never force release.",
+      "practice_material": [
+        "Take your time today and remember to breathe naturally before you begin speaking to anyone.",
+        "Go to the main kitchen and bring me a large glass of cold, still water from the refrigerator.",
+        "Please carefully pass me the softened butter and the warm basket of freshly baked bread from the counter.",
+        "Tell me about everything that happened during your first full week at the new school or workplace.",
+        "Can you believe how incredibly quickly this whole year has gone by since we last spoke properly?",
+        "Dad decided to drive all the way downtown early this morning despite the unusually heavy morning rush-hour traffic.",
+        "Green plants grow most successfully in cool, consistently damp soil conditions with indirect morning light.",
+        "Bobby bravely brought back the books he had borrowed from the library before the final return deadline.",
+        "The general guided the ground troops carefully across the grassy terrain toward the designated camp.",
+        "Please take particular care when carrying the glass containers — they are extremely fragile and quite irreplaceable.",
+        "Doctors generally recommend getting between seven and nine hours of good quality sleep every single night without exception.",
+        "The keen climbers carefully checked all their gear before beginning their careful ascent of the crumbling cliff face."
+      ],
+      "progression_rule": "Pull-out applied successfully (smooth glide, not forced) on 70% or more of blocks for two consecutive sessions. Cancellation remains the backup for failed Pull-outs — never forcing.",
+      "self_monitoring": "For each block: (1) Pull-out attempted? (2) Was the glide smooth or forced? (3) Which sound? (4) Was the Cancellation backup used when Pull-out failed? Log all four. A smooth Pull-out count below 50% means return to Cancellation practice.",
+      "self_check": "Does the Pull-out feel like sliding out of quicksand (gradual, smooth) or like a sudden snap? The snap feeling indicates residual tension — this means the relax step (step 2) is being skipped."
+    },
+    "advanced": {
+      "name": "Preparatory Set + Full Modification Hierarchy — High-Pressure Plosive Passage",
+      "clinical_method": "Preparatory Set (Van Riper, 1973) — the most advanced modification technique + Full hierarchy: Preparatory Set → Pull-out → Cancellation as cascade + ARTS high-fear-hierarchy exposure",
+      "duration": "30 minutes",
+      "target_fluency_rate": "Preparatory Set applied on known trigger sounds; fewer than 2 unmanaged blocks per minute in spontaneous speech",
+      "goal": "Master the Preparatory Set technique — the pinnacle of Van Riper's modification approach. The speaker anticipates words likely to produce blocks (based on their known trigger sounds and past experience), and pre-configures the articulators with light contact and easy onset BEFORE speech begins. This requires the deepest self-awareness of all three techniques. The full cascade hierarchy is: use Preparatory Set on anticipated blocks → if it fails, Pull-out → if Pull-out fails, Cancellation. This is the technique used in Van Riper's advanced clinical sessions and requires prior mastery of both Cancellation and Pull-out.",
+      "instruction": "Before reading each sentence: scan for your known trigger sounds (the phonemes that most commonly produce your blocks — identified in previous sessions). For each trigger word: plan a Preparatory Set — pre-position your articulators with minimum contact, ensure airflow is active, use gentle onset. Then read the sentence using: Preparatory Set on all anticipated blocks, Pull-out on any unanticipated block that begins, Cancellation as final backup. The passage below is loaded with plosives (b, d, g, k, p, t) — the sounds that most commonly trigger blocks. Round 1: read slowly with maximum technique. Round 2: natural pace, retain full hierarchy. Round 3 (transfer): retell the story content spontaneously in your own words for 2 minutes — apply full hierarchy in spontaneous speech. This spontaneous transfer is the definitive test of technique mastery.",
+      "technique_cue": "Scan → identify triggers → Preparatory Set on known → Pull-out on surprise blocks → Cancellation as last resort. Full hierarchy, every sentence. Spontaneous retell on Round 3.",
+      "practice_material": [
+        "Captain Greg Beck decided very boldly to take a challenging and ambitious solo trip to the distant, dramatic peaks of the great northern mountain range, despite considerable warnings from colleagues about the difficulty of the route.",
+        "He packed a large, sturdy green backpack with thick woolen blankets, several cans of tuna, a full loaf of dark rye bread, two pairs of tough waterproof boots, and a complete set of detailed topographic maps.",
+        "The long, difficult path began at the very bottom of an almost vertical, crumbling cliff and twisted steeply through dense, dark patches of tall grass, broken tree trunks, and deep, muddy patches of boggy ground.",
+        "Despite the extraordinarily difficult and unpredictable terrain, Greg maintained a consistently steady and deliberate pace, taking carefully timed breaks every forty-five minutes to drink cold, clean water from a deep, fast-flowing mountain creek.",
+        "By late afternoon, as the temperature began to drop dramatically, Greg had successfully navigated three particularly dangerous rocky passages that had tested his balance, strength, and determination to their absolute limits.",
+        "By dusk, after nine full hours of continuous climbing and careful, patient navigation, he had at last reached the snow-dusted summit of the tallest and most technically demanding peak in the entire range.",
+        "The completely breathtaking, panoramic view of the vast golden valley stretching endlessly below him in the fading evening light made every single difficult, painful, exhausting step of the entire grueling journey feel completely and utterly worthwhile.",
+        "Back at base camp the following morning, Greg called his family and described, in careful and precise detail, everything he had experienced, felt, and overcome during the most demanding physical and mental challenge of his entire life."
+      ],
+      "progression_rule": "Fewer than 2 unmanaged blocks per minute in the Round 3 spontaneous retell, with Preparatory Set applied correctly on at least 80% of anticipated trigger sounds, across three consecutive sessions. At this point, the client is at Van Riper Stabilization Phase — maintaining technique in daily life without clinical prompting.",
+      "self_monitoring": "Log after each session: (1) How many trigger words were correctly identified during pre-scan? (2) What percentage of Preparatory Sets succeeded? (3) How many Pull-outs were needed? (4) How many Cancellations? (5) Unmanaged blocks? The ideal progression across sessions: Cancellations decrease, Pull-outs decrease, Preparatory Sets increase. This ratio shift is the measurable clinical indicator of genuine mastery.",
+      "self_check": "Is the Pre-scan becoming automatic — are you identifying trigger sounds before you consciously decide to look? That automaticity is the goal of Preparatory Set. What is your current Preparatory Set success rate? How does the spontaneous retell compare to the scripted read in terms of unmanaged blocks?"
+    }
   }
 }
