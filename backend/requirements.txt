@@ -10,7 +10,3 @@ dnspython
 pydantic[email]
 pymongo>=4.0.0
 certifi
-numpy==1.26.4
-librosa==0.10.2.post1
-transformers==4.48.3
-torch==2.6.0
