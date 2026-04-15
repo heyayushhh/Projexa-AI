@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Exercise } from './exerciseData';
+import { getExerciseTypeLabel } from './exerciseData';
 
 interface SpeechPracticeProps {
   exercise: Exercise;
@@ -298,7 +299,7 @@ const SpeechPractice: React.FC<SpeechPracticeProps> = ({ exercise, onComplete, o
               exercise.difficulty === 'Medium' ? 'bg-blue-500/10 text-blue-500' :
               'bg-purple-500/10 text-purple-500'
             }`}>
-              {exercise.type} • {exercise.difficulty}
+              {getExerciseTypeLabel(exercise.type)} • {exercise.difficulty}
             </div>
             <h2 className="text-2xl sm:text-3xl font-black mt-3 text-text-primary tracking-tight break-words">
               Speech Practice
@@ -320,6 +321,25 @@ const SpeechPractice: React.FC<SpeechPracticeProps> = ({ exercise, onComplete, o
           <p className="text-xl sm:text-3xl md:text-4xl font-black leading-tight text-text-primary tracking-tight break-words">
             "{exercise.sentence}"
           </p>
+
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="p-4 rounded-2xl bg-bg-primary/40 border border-border-subtle">
+              <p className="text-[10px] font-black uppercase tracking-widest text-text-secondary mb-2">Target Focus</p>
+              <p className="text-sm sm:text-base font-bold text-text-primary break-words">{exercise.targetFocus}</p>
+            </div>
+            <div className="p-4 rounded-2xl bg-bg-primary/40 border border-border-subtle">
+              <p className="text-[10px] font-black uppercase tracking-widest text-text-secondary mb-2">Technique</p>
+              <p className="text-sm sm:text-base font-bold text-text-primary break-words">{exercise.technique}</p>
+            </div>
+            <div className="p-4 rounded-2xl bg-bg-primary/40 border border-border-subtle">
+              <p className="text-[10px] font-black uppercase tracking-widest text-text-secondary mb-2">Pacing</p>
+              <p className="text-sm sm:text-base font-bold text-text-primary break-words">{exercise.pacing}</p>
+            </div>
+            <div className="p-4 rounded-2xl bg-bg-primary/40 border border-border-subtle">
+              <p className="text-[10px] font-black uppercase tracking-widest text-text-secondary mb-2">Tip</p>
+              <p className="text-sm sm:text-base font-bold text-text-primary break-words">{exercise.tip}</p>
+            </div>
+          </div>
         </div>
 
         {error && (

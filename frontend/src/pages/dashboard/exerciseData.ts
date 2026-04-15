@@ -1,19 +1,23 @@
 export interface Exercise {
   id: number;
-  type: 'SoundRep' | 'WordRep' | 'Interjection' | 'Prolongation' | 'NoStutteredWords';
+  type: 'SoundRep' | 'WordRep' | 'Interjection' | 'Prolongation' | 'NoStutteredWords' | 'Fluency';
   difficulty: 'Easy' | 'Medium' | 'Hard';
   level: number;
   sentence: string;
   targetFocus: string;
+  technique: string;
+  pacing: string;
+  tip: string;
 }
 
 const generateExercises = (): Exercise[] => {
-  const types: Exercise['type'][] = ['SoundRep', 'WordRep', 'Interjection', 'Prolongation', 'NoStutteredWords'];
+  type GeneratedType = Exclude<Exercise['type'], 'Fluency'>;
+  const types: GeneratedType[] = ['SoundRep', 'WordRep', 'Interjection', 'Prolongation', 'NoStutteredWords'];
   const difficulties: Exercise['difficulty'][] = ['Easy', 'Medium', 'Hard'];
   const exercises: Exercise[] = [];
   let id = 1;
 
-  const sentences: Record<Exercise['type'], Record<Exercise['difficulty'], string[]>> = {
+  const sentences: Record<GeneratedType, Record<Exercise['difficulty'], string[]>> = {
     SoundRep: {
       Easy: [
         "The bill is on the table.",
@@ -210,13 +214,19 @@ const generateExercises = (): Exercise[] => {
     difficulties.forEach(diff => {
       const targetSentences = sentences[type][diff];
       targetSentences.forEach((sentence, index) => {
+        const technique = getTechnique(type);
+        const pacing = getPacing(diff);
+        const tip = getTip(type);
         exercises.push({
           id: id++,
           type,
           difficulty: diff,
           level: index + 1,
           sentence,
-          targetFocus: getTargetFocus(type)
+          targetFocus: getTargetFocus(type),
+          technique,
+          pacing,
+          tip
         });
       });
     });
@@ -225,13 +235,69 @@ const generateExercises = (): Exercise[] => {
   return exercises;
 };
 
+export const getExerciseTypeLabel = (type: Exercise['type']): string => {
+  if (type === 'NoStutteredWords') return 'Fluency';
+  return type;
+};
+
+export const getTechnique = (type: Exercise['type']): string => {
+  switch (type) {
+    case 'SoundRep':
+      return 'Use gentle onset and light articulatory contact; keep initial consonants soft and smooth.';
+    case 'WordRep':
+      return 'Use a steady rhythm with connected speech; keep airflow moving from word to word.';
+    case 'Interjection':
+      return 'Use a silent pause to plan your next phrase instead of using filler words.';
+    case 'Prolongation':
+      return 'Maintain continuous airflow with a gentle voice start; keep transitions smooth, not stretched.';
+    case 'NoStutteredWords':
+    case 'Fluency':
+      return 'Use natural fluency shaping: steady rate, continuous airflow, relaxed articulation, and planned pauses.';
+    default:
+      return 'Use relaxed speech with steady airflow and a calm pace.';
+  }
+};
+
+export const getPacing = (difficulty: Exercise['difficulty']): string => {
+  switch (difficulty) {
+    case 'Easy':
+      return 'Pause after 3–4 words. Keep each phrase short and controlled.';
+    case 'Medium':
+      return 'Pause at natural clause breaks (after commas/idea units). Avoid rushing transitions.';
+    case 'Hard':
+      return 'Pause at natural phrase boundaries (~7–10 words). Maintain a confident, steady pace.';
+    default:
+      return 'Pause at natural phrase boundaries and keep a steady pace.';
+  }
+};
+
+export const getTip = (type: Exercise['type']): string => {
+  switch (type) {
+    case 'SoundRep':
+      return 'Start softly, then keep airflow steady. If you feel tension, reset and restart with a gentler onset.';
+    case 'WordRep':
+      return 'If a word feels difficult, pause briefly and continue—do not speed up to “get through” it.';
+    case 'Interjection':
+      return 'When you need time, pause silently and maintain eye contact; avoid “um/uh” as a habit.';
+    case 'Prolongation':
+      return 'Think “smooth and supported” rather than “stretched.” Keep the voice gentle and continuous.';
+    case 'NoStutteredWords':
+    case 'Fluency':
+      return 'Prioritize natural speech: calm breath, steady rate, and short pauses to stay organized.';
+    default:
+      return 'Use a calm breath before you start and keep your pace steady.';
+  }
+};
+
 const getTargetFocus = (type: Exercise['type']): string => {
   switch (type) {
-    case 'SoundRep': return "Focus on light contact and smooth sound transition.";
-    case 'WordRep': return "Maintain steady rhythm between words.";
-    case 'Interjection': return "Focus on pausing instead of using filler words.";
-    case 'Prolongation': return "Gentle onset and controlled airflow.";
-    case 'NoStutteredWords': return "Maintain continuous phonation and natural flow.";
+    case 'SoundRep': return "Stabilize the first sound with gentle onset and light contact.";
+    case 'WordRep': return "Maintain consistent rhythm and smooth word-to-word transitions.";
+    case 'Interjection': return "Replace filler words with confident, silent pauses.";
+    case 'Prolongation': return "Support smooth airflow and gentle voice onset without forcing.";
+    case 'NoStutteredWords':
+    case 'Fluency':
+      return "Build natural fluency with steady rate, continuous airflow, and calm phrasing.";
     default: return "Focus on clear and relaxed speech.";
   }
 };
