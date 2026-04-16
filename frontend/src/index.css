@@ -1,0 +1,60 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-card-bg: var(--card-bg);
+  --color-border-subtle: var(--border-subtle);
+  --color-sidebar-bg: var(--sidebar-bg);
+  --color-sidebar-active: var(--sidebar-active);
+  --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  --shadow-premium: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+}
+
+:root {
+  /* Light Mode - Calm & Health Focused (#F5F7F6) */
+  --bg-primary: #F5F7F6;
+  --bg-secondary: #FFFFFF;
+  --text-primary: #2D3748; /* Dark grey, not black */
+  --text-secondary: #718096;
+  --accent: #38B2AC; /* Soft Green/Teal */
+  --accent-hover: #319795;
+  --card-bg: #FFFFFF;
+  --sidebar-bg: #FFFFFF;
+  --sidebar-active: rgba(56, 178, 172, 0.08);
+  --border-subtle: rgba(0, 0, 0, 0.04);
+  
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.dark {
+  /* Dark Mode - Deep Green-Black (#0F1A1A) */
+  --bg-primary: #0F1A1A; 
+  --bg-secondary: #162424; /* Slightly lighter cards */
+  --text-primary: #E2E8F0; /* Soft white, not pure white */
+  --text-secondary: #A0AEC0;
+  --accent: #4FD1C5; /* Soft Cyan/Teal (not neon) */
+  --accent-hover: #38B2AC;
+  --card-bg: #162424;
+  --sidebar-bg: #111D1D;
+  --sidebar-active: rgba(79, 209, 197, 0.06);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+}
+
+body {
+  margin: 0;
+  /* Removed fixed background color to allow App background layers to be visible */
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+}

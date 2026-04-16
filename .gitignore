@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+venv/
+ENV/
+env/
+.venv/
+build/
+dist/
+*.log
+*.err
+temp_*
+*.mp3
+*.wav
+*.mp4
+Nikhil_Stutter_Demo/recordings/
+Nikhil_Stutter_Demo/
+Projexa-AI/
+Speech_Therapy_System/
+Ideas/
+.gitignore_backup
+
+# Node
+node_modules/
+dist/
+dist-ssr
+*.local
+frontend/node_modules/
+frontend/dist/
+
+# OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json
+*.swp
+*.swo

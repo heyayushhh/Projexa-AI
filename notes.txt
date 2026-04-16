@@ -1,0 +1,30 @@
+1st commit:-
+On using whisper small model it directly transcripted the whole audio and didnt catch any stuttering though it caught some repetations but neither stuttering nor prolongations were caught due to models incapability 
+The approach we tried on 5th feb 2026:-
+We attempted to use the Whisper model to segment audio at the word level and train a classifier to detect stuttering based on word duration and waveform features (e.g., prolonged fillers like “uh” or “the”), but this rule-based duration logic resulted in poor model performance.
+
+Created a training dataset and rewrote the whole code
+using the sep28k labels csv file wrote the code to download both the clean and voic imaprement data and created a dataset for model training with 3 sec clips of both clean and Imparement audio
+
+27-02-2026
+found a pretrainned model that has 90% accuracy on sep28K data finetunned it to detect imparements in chunks of 3 sec
+
+06-03-2026
+detection_model2.py detects following types of stuttering:
+0 : NoStutteredWords
+1 : WordRep
+2 : SoundRep 
+3 : Prolongation
+4 : Interjection
+5 : Block
+It can also analyze long audio and detect stutter segments over 3s time instead of giving only one prediction for the whole file.
+
+16-03-2026
+The detection_model2.py code was enhanced to store chunk predictions and merge consecutive chunks with the same label into stutter segments, giving a more accurate representation of continuous stuttering events.
+A weighted scoring system was introduced where different stutter types are assigned severity weights and combined with segment duration to compute an overall stuttering intensity score.
+The final intensity score is then normalized and mapped to a severity level (Fluent, Mild, Moderate, Severe) for easier interpretation.
+
+We created a structured exercise recommendation dataset mapping different stuttering types (like repetition, prolongation, and blocks) to suitable speech therapy exercises. The dataset includes fields such as exercise name, target impairment, difficulty level, and instructions, allowing the model to suggest relevant exercises based on predictions. A key challenge was the lack of a standardized dataset, requiring manual curation from multiple sources, along with ensuring accurate and meaningful mapping between detected impairments and appropriate exercises.
+
+The upcoming work on the project will be based on the following research paper on stuttering:
+https://arxiv.org/pdf/2501.15877
