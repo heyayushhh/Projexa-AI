@@ -1,38 +1,57 @@
 import asyncio
-import random
-from typing import Dict, List, Any
+import logging
+import os
+from typing import Any, Dict
+
+from .audio_extraction import extract_audio_from_video
+from .stutter_detection import run_stutter_detection
+from .transcription import transcribe_audio
+
+logger = logging.getLogger(__name__)
+
 
 async def run_stutter_analysis(file_path: str) -> Dict[str, Any]:
     """
-    Simulates the ML processing logic from Nikhil_Stutter_Demo.
-    In a real scenario, this would call the actual ML model code
-    using the provided video/audio file.
+    Full analysis pipeline for an uploaded video file:
+
+    1. Extract audio from the video (16 kHz mono WAV) using ffmpeg.
+    2. Run Whisper transcription and HF stutter detection concurrently in a
+       thread pool so the async event loop is never blocked.
+    3. Aggregate results and return a dict that matches the schema expected by
+       ``dashboard.py / process_and_store()``.
+
+    Return schema::
+
+        {
+            "fluencyScore":   float,   # 0-100, derived from model predictions
+            "stutterEvents":  list,    # [{timestamp, start, end, type, confidence}, …]
+            "headMovements":  list,    # kept empty – no visual model in this backend
+            "transcript":     str,
+            "totalWords":     int,
+        }
     """
-    # Simulate processing delay
-    await asyncio.sleep(5)
-    
-    # Mocked results based on requirements
-    fluency_score = round(random.uniform(65.0, 95.0), 1)
-    
-    stutter_events = [
-        {"timestamp": 2.5, "type": "stutter"},
-        {"timestamp": 12.0, "type": "pause"},
-        {"timestamp": 25.3, "type": "stutter"}
-    ]
-    
-    head_movements = [
-        {"timestamp": 5.0, "severity": 0.2},
-        {"timestamp": 15.5, "severity": 0.8},
-        {"timestamp": 30.1, "severity": 0.4}
-    ]
-    
-    transcript = "This is a simulated transcript of the practiced speech session."
-    total_words = len(transcript.split())
-    
+    # Step 1 — audio extraction (blocking I/O; run in thread pool)
+    audio_path = await asyncio.to_thread(extract_audio_from_video, file_path)
+
+    try:
+        # Step 2 — transcription and stutter detection run concurrently
+        transcript, detection = await asyncio.gather(
+            asyncio.to_thread(transcribe_audio, audio_path),
+            asyncio.to_thread(run_stutter_detection, audio_path),
+        )
+    finally:
+        # Always clean up the temporary audio file
+        if os.path.exists(audio_path):
+            os.remove(audio_path)
+
+    stutter_events: list = detection["events"]
+    fluency_score: float = detection["fluency_score"]
+    total_words: int = len(transcript.split()) if transcript else 0
+
     return {
         "fluencyScore": fluency_score,
         "stutterEvents": stutter_events,
-        "headMovements": head_movements,
+        "headMovements": [],
         "transcript": transcript,
-        "totalWords": total_words
+        "totalWords": total_words,
     }

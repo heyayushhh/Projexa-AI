@@ -10,3 +10,9 @@ dnspython
 pydantic[email]
 pymongo>=4.0.0
 certifi
+# ML dependencies for stutter detection and transcription
+torch
+transformers
+librosa
+soundfile
+openai-whisper
